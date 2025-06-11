@@ -4,8 +4,8 @@
 source ${MGMR_Base}/MGMR_SC.sh
 
 #------- Run MGMR3D to generate a sample shower profile ----------------------------
-#export LIBRARY="${FFTlib}"
-#source ${M_ProgDir}/RunMGMR.sh MGMR3D2_fit-v10 MGMR3D2-SKA.in
+export LIBRARY="${FFTlib}"
+source ${M_ProgDir}/RunMGMR.sh MGMR3D2_fit-v10 MGMR3D2-SKA.in
 
 #exit
 #--------------- Run Beaming Kernel generator ----------------------------
