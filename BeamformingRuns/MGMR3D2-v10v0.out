@@ -1,0 +1,229 @@
+ folder "New" probably existed already
+   ----- MGMR3D_fit release of v0.1, October 2023    -------------------------
+   ----- run on  9/ 6/2025 , started at 12: 6:28.599 -------------------------
+Mesh in height, number=2000, stepsize=10.0[m], max height=20.0[km]
+Mesh in distance from core, number= 75, stepsize= 10.0[m]
+ (L,R) parametrization used for long. sh. profile with L=   220.00000000000000      , R=  0.29999999999999999     
+&SHPARS
+ OUTFILELABEL="v0        ",
+ PLOTBASE="New/                ",
+ TEST=F,
+ FITTING=F,
+ SELECTFH=4          ,
+ LAM_TC=  5.0000000000000003E-002,
+ LAM_100=  7.0000000000000000     ,
+ XDEPALPHA=  0.0000000000000000     ,
+ INTEGRATECURRENT= -1.0000000000000000E-002,
+ PANCAKEINCFIELD= 0.40999999999999998     ,
+ OBSDIST_DIM=75         ,
+ OBSDIST_STEP=  10.000000000000000     ,
+ TTRACE_STEP=  2.0000000000000000E-002,
+ LAMX= 0.29999999999999999     ,
+ U0= 0.23999999999999999     ,
+ A_CHX=  2.5000000000000000     ,
+ J0Q= 0.22000000000000000     ,
+ PADDING=5000       ,
+ D_ESMOOTH=  2.0000000000000000     ,
+ ALTERNATIVESMOOTH=F,
+ U0= 0.23999999999999999     ,
+ F_LIM=  1.0000000000000000     ,
+ NU_MIN=  48.000000000000000     ,
+ NU_MAX=  300.00000000000000     ,
+ SAMPLINGTIME=  1.0000000000000000     ,
+ STPARRANGE=150        ,
+ VOLTAGES=F,
+ RH0=  2.9200000000000000E-004,
+ MOLIERERADIUS=  0.0000000000000000     ,
+ J0T=  14.770000000000000     ,
+ GROUNDLEVEL=  0.0000000000000000     ,
+ X_0=  220.00000000000000     ,
+ X_MAX=  900.00000000000000     ,
+ RNRMA=  2.5000000000000000     ,
+ RNRMB= 0.50000000000000000     ,
+ ZEN_SH=  43.000000000000000     ,
+ AZI_SH=  0.0000000000000000     ,
+ ZEN_B=  22.190000000000001     ,
+ AZI_B= -90.000000000000000     ,
+ INTENSITY_WEIGHT=F,
+ NOISEPOWER= -1.0000000000000000     ,
+ ENERGY_SH=  3624933134.6100001     ,
+ RL_PARAM=T,
+ R_0= 0.29999999999999999     ,
+ L_0=  220.00000000000000     ,
+ FIT_STI=T,
+ /
+ No E-field specified
+possible fit parameters:
+    J0Q,     R_0,     L_0,   X_max, D_ESmth,      u0, XDepAlp, MollyRd, Shift_x, Shift_y, 
+ Pulse time traces written to file=-testttrace-ddd-ttt.csv
+ Shower current structure written to file=New/sh_Current.dat
+ data read from file=../runs/data/data_127944584xxx.dat
+ Input-data file could not be found!
+components vShower & B (East, North, UP)=(  0.682  0.000  0.731) & (  0.000 -0.378  0.926)
+alpha_Bz=210.9deg, sin(alpha_Bs)=
+Sin_Bz-test=  -0.35006  -0.35006
+vBxvvB_z-test=   0.73135   0.73135
+alpha_vB= 47.4deg, sin(alpha_vB)= 0.74
+components vxB & vxvxB (East, North, UP)=(  0.375 -0.858 -0.350) & (  0.628  0.513 -0.585)
+   start Initialize @ 12: 6:28.603 -------------------------
+last true basis-grid time= 377.695, last observer time= 426.962[ns]
+Refractivity at sea level=   2.920x 10^{-4}, Moliere radius=   Inf[m], J0Q= 0.2200
+f(h) shape 4 with L=0.05[m], L@100m= 7.00[m] index for X-dependence =0.00
+ Generating atmosphere for shower zenith angle [degree]=   43.000000000000007     
+ !Atmosphere pendepth:   179.00888041644748        1415.2645958763903     
+ !PancakeInit:   0.0000000000000000             2000          75   10.000000000000000        7.0000000000000000        5.0000000000000003E-002
+parametrization radial dependence of \lambda; @r=0: 0.05, @r= 1.0m: 0.07, @r= 750.0m:   Inf
+ CoreDistance=  0.71428571428571430      [m], lambda=   5.0000000000000003E-002
+ CoreDistance=   1.0114197539025911      [m], lambda=   7.0799382773181388E-002
+ CoreDistance=   1.4321578860181294      [m], lambda=  0.10025105202126906     
+ CoreDistance=   2.0279178872765566      [m], lambda=  0.14195425210935897     
+ CoreDistance=   2.8715066946774845      [m], lambda=  0.20100546862742394     
+ CoreDistance=   4.0660180322444832      [m], lambda=  0.28462126225711382     
+ CoreDistance=   5.7574313405506992      [m], lambda=  0.40302019383854892     
+ CoreDistance=   8.1524517053991943      [m], lambda=  0.57067161937794364     
+ CoreDistance=   11.543770976608659      [m], lambda=  0.80806396836260619     
+ CoreDistance=   16.345837200377165      [m], lambda=   1.1442086040264017     
+ CoreDistance=   23.145503693952215      [m], lambda=   1.6201852585766550     
+ CoreDistance=   32.773747510124124      [m], lambda=   2.2941623257086889     
+ CoreDistance=   46.407221897617568      [m], lambda=   3.2485055328332297     
+ CoreDistance=   65.712053331387821      [m], lambda=   4.5998437331971473     
+ CoreDistance=   93.047456332412693      [m], lambda=   6.5133219432688891     
+ CoreDistance=   131.75404953898735      [m], lambda=   9.2227834677291138     
+ CoreDistance=   186.56210770454933      [m], lambda=   13.059347539318454     
+ CoreDistance=   264.16964148691761      [m], lambda=   18.491874904084234     
+ CoreDistance=   374.06095129372756      [m], lambda=   26.184266590560931     
+ CoreDistance=   529.66568942289950      [m], lambda=   37.076598259602967     
+ CoreDistance=   750.00007774545747      [m], lambda=   52.500005442182022     
+ L_0, R_0, X_0   220.00000000000000       0.29999999999999999        166.66666666666663     
+Estimated penetration depth offset at topheight=  179.0    , air density at ground= 0.1229    
+ !!! Warning, X_0=   166.66666666666663       falls above topheight !!!
+ Initialize_shower:AtmHei_dim=        2000   166.66666666666663        179.00888041644748        549.57434598217310     
+ NP_F=  0.15000000596046448       in "NPart*(1. +NP_F*(rho(1)/rho(i))*(Force_x(i)**2 + ..."
+ X_max= 900.00, X_0= 166.67, D=  5.000[km], H=  3.657[km], E= 3.62E+09[GeV], FootShift (x,y)=(   24.00,  -20.00) [m], density@Xmax/.06=  1.42  0.02054
+Charge excess max@   4.67[km]= 929.2[g/cm^2]
+ Curr_Xmax= 894.84, D=  5.070[km], H=  3.708[km], F_max=0.109 x 100 keV/m, cos_Zen=0.73 Peak current in x and y:  0.1555E+09   0.000    
+No integrated charge dipole included
+ Moli_tc is set automatically to    50.000000000000000       m, distance from ground to X_max=   5.0000000000000000       km
+ ***********Moli_tc is set back to the default    50.000000000000000       m, distance from ground to X_max=   5.0000000000000000       km
+ !Lateral; Moli_tc, norm_tc=   50.000000000000000        7.1776039289072155E-002
+Zenith angle= 43.000 degree
+ !CoreDist_A  0.71428571428571430        1.0114197539025911        1.4321578860181294        2.0279178872765566        2.8715066946774845     
+ ! 7500. 0. 1   0.  250. "25"  !,zeta,z, N_phi0, phi_0 [pi]                      
+ ! 6500. 0. 1   0.  250. "25"  !,zeta,z, N_phi0, phi_0 [pi]                      
+ ! 5500. 0. 1   0.  250. "25"  !,zeta,z, N_phi0, phi_0 [pi]                      
+ ! 4500. 0. 1   0.  250. "25"  !,zeta,z, N_phi0, phi_0 [pi]                      
+ ! 3500. 0. 1   0.  250. "25"  !,zeta,z, N_phi0, phi_0 [pi]                      
+ ! 2500. 0. 1   0.  250. "25"  !,zeta,z, N_phi0, phi_0 [pi]                      
+ ! 1500. 0. 1   0.  250. "25"  !,zeta,z, N_phi0, phi_0 [pi]                      
+ ! 0500. 0. 1   0.  250. "25"  !,zeta,z, N_phi0, phi_0 [pi]                      
+ ! 6000. 0.   1   0.  500. "d-fine" !,zeta,z, N_phi0, phi_0 [pi]                 
+ !  5500. 0.   1   0.  500. "13" !, zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, lab
+ !  8500. 0.   1   0.  500. "13" !, zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, lab
+ !  1000. 0.   1   0.  500. "50" ! zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, labe
+ !  3000. 0.   1   0.  500. "50" !zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, label
+ !  5000. 0.   1   0.  500. "50" !zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, label
+ !  7000. 0.   1   0.  500. "50" !zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, label
+ !  8500. 0.   1   0.  500. "50" !zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, label
+ ! 10000. 0.   1   0.  500. "50"  !zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, labe
+ ! 12000. 0.   1   0.  500. "50"  !zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, labe
+ ! 15000. 0.   1   0.  500. "50"  !zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, labe
+ ! 17000. 0.   1   0.  500. "50" !zeta_f, r_s, N_phi0, phi_0 [pi], DistMax, label
+ !  8000. 0.   1   0.  500. "50"  !,zeta,z, N_phi0, phi_0 [pi]                   
+ !  6000. 0.   1   0.  500. "50" !,zeta,z, N_phi0, phi_0 [pi]                    
+ !  4000. 0.   1   0.  500. "50"  !,zeta,z, N_phi0, phi_0 [pi]                   
+ ! 11000. 0.   1   0.  500. "50"  !,zeta,z, N_phi0, phi_0 [pi]                   
+ !  2000. 0.   1   0.  500. "50" !,zeta,z, N_phi0, phi_0 [pi]                    
+ !!!!!!!!!                                                                       
+ !-----------------------                                                        
+ !-----------------------                                                        
+ -----------------------                                                         
+   start ZetaInt @ 12: 6:28.668 -------------------------
+   start radial-int @ 12: 6:52.727 -------------------------
+   start AnalyzeSrc1 @ 12: 7:15.586 -------------------------
+ WideSource,zeta,rs:   3000.0000000000000        0.0000000000000000     
+   start AnalyzeSrc2 @ 12: 7:15.586 -------------------------
+ WideSource,zeta,rs:   7000.0000000000000        0.0000000000000000     
+   start Analyze @ 12: 7:15.588 -------------------------
+Mesh in observer-time, number before start= 5000, total #=6400, stepsize=0.067[ns], total length of calculated signal= 427.0[ns]
+Down-sampling to1.000[ns], Frequency range upto   0.5[GHz], in steps of   0.9[MHz]
+Frequency filter from  47.5[MHz] till   300.[MHz]
+ Calculate observables at azimuth=   0.0000000000000000      degree
+ d=    10.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.2519E+15   1.0000   0.0000   0.0000
+ d=    20.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.2890E+15   1.0000   0.0000   0.0000
+ d=    30.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3372E+15   1.0000   0.0000   0.0000
+ d=    40.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3605E+15   1.0000   0.0000   0.0000
+ d=    50.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3966E+15   1.0000   0.0000   0.0000
+ d=    60.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3977E+15   1.0000   0.0000   0.0000
+ d=    70.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.4009E+15   1.0000   0.0000   0.0000
+ d=    80.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3802E+15   1.0000   0.0000   0.0000
+ d=    90.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3486E+15   1.0000   0.0000   0.0000
+ d=   100.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3072E+15   1.0000   0.0000   0.0000
+ d=   110.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.2624E+15   1.0000   0.0000   0.0000
+ d=   120.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.2162E+15   1.0000   0.0000   0.0000
+ d=   130.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1753E+15   1.0000   0.0000   0.0000
+ d=   140.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1383E+15   1.0000   0.0000   0.0000
+ d=   150.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1075E+15   1.0000   0.0000   0.0000
+ d=   160.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.8242E+14   1.0000   0.0000   0.0000
+ d=   170.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.6203E+14   1.0000   0.0000   0.0000
+ d=   180.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.4642E+14   1.0000   0.0000   0.0000
+ d=   190.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3462E+14   1.0000   0.0000   0.0000
+ d=   200.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.2550E+14   1.0000   0.0000   0.0000
+ d=   210.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1856E+14   1.0000   0.0000   0.0000
+ d=   220.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1358E+14   1.0000   0.0000   0.0000
+ d=   230.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.9971E+13   1.0000   0.0000   0.0000
+ d=   240.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.7291E+13   1.0000   0.0000   0.0000
+ d=   250.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.5329E+13   1.0000   0.0000   0.0000
+ d=   260.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3824E+13   1.0000   0.0000   0.0000
+ d=   270.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.2778E+13   1.0000   0.0000   0.0000
+ d=   280.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.2061E+13   1.0000   0.0000   0.0000
+ d=   290.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1483E+13   1.0000   0.0000   0.0000
+ d=   300.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1097E+13   1.0000   0.0000   0.0000
+ d=   310.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.8081E+12   1.0000   0.0000   0.0000
+ d=   320.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.5842E+12   1.0000   0.0000   0.0000
+ d=   330.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.4692E+12   1.0000   0.0000   0.0000
+ d=   340.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.3862E+12   1.0000   0.0000   0.0000
+ d=   350.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.2855E+12   1.0000   0.0000   0.0000
+ d=   360.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.2224E+12   1.0000   0.0000   0.0000
+ d=   370.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1947E+12   1.0000   0.0000   0.0000
+ d=   380.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1402E+12   1.0000   0.0000   0.0000
+ d=   390.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1185E+12   1.0000   0.0000   0.0000
+ d=   400.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.9714E+11   1.0000   0.0000   0.0000
+ d=   410.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.9797E+11   1.0000   0.0000   0.0000
+ d=   420.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1005E+12   1.0000   0.0000   0.0000
+ d=   430.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1233E+12   1.0000   0.0000   0.0000
+ d=   440.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1581E+12   1.0000   0.0000   0.0000
+ d=   450.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1373E+12   1.0000   0.0000   0.0000
+ d=   460.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1392E+12   1.0000   0.0000   0.0000
+ d=   470.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1634E+12   1.0000   0.0000   0.0000
+ d=   480.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1630E+12   1.0000   0.0000   0.0000
+ d=   490.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1297E+12   1.0000   0.0000   0.0000
+ d=   500.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1077E+12   1.0000   0.0000   0.0000
+ d=   510.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1027E+12   1.0000   0.0000   0.0000
+ d=   520.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.9543E+11   1.0000   0.0000   0.0000
+ d=   530.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1125E+12   1.0000   0.0000   0.0000
+ d=   540.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1666E+12   1.0000   0.0000   0.0000
+ d=   550.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1163E+12   1.0000   0.0000   0.0000
+ d=   560.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.7758E+11   1.0000   0.0000   0.0000
+ d=   570.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.9369E+11   1.0000   0.0000   0.0000
+ d=   580.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.8997E+11   1.0000   0.0000   0.0000
+ d=   590.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.9053E+11   1.0000   0.0000   0.0000
+ d=   600.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1162E+12   1.0000   0.0000   0.0000
+ d=   610.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1500E+12   1.0000   0.0000   0.0000
+ d=   620.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1079E+12   1.0000   0.0000   0.0000
+ d=   630.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.9257E+11   1.0000   0.0000   0.0000
+ d=   640.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1008E+12   1.0000   0.0000   0.0000
+ d=   650.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.6725E+11   1.0000   0.0000   0.0000
+ d=   660.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.9110E+11   1.0000   0.0000   0.0000
+ d=   670.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1429E+12   1.0000   0.0000   0.0000
+ d=   680.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1157E+12   1.0000   0.0000   0.0000
+ d=   690.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.9689E+11   1.0000   0.0000   0.0000
+ d=   700.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1038E+12   1.0000   0.0000   0.0000
+ d=   710.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1100E+12   1.0000   0.0000   0.0000
+ d=   720.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.8217E+11   1.0000   0.0000   0.0000
+ d=   730.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.7161E+11   1.0000   0.0000   0.0000
+ d=   740.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.7044E+11   1.0000   0.0000   0.0000
+ d=   750.0[m], phi=     0.0[deg], I,Q/I,V/I,U/I=   0.1117E+03   1.0000   0.0000   0.0000
+   start endgame @ 12: 7:18.227 -------------------------
+   MGMR3D, run on  9/ 6/2025 , stopped at 12: 7:18.227 -------------------------
+ shellin:nohup ./AfigNew.sh  >AfigNew.sh.log 2>&1  &                                                         
+ AfigNew.sh  is submitted
