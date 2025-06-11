@@ -1,0 +1,29 @@
+ &BeamPars 
+Base =   "SKx/Coarse"   ! 48 -- 300 MHz
+DataBase = "SKA/"
+AntennaLayout = .false., DistMax = 500.
+dN_tr=5
+N_phir =  5 ! 9 ! 11  !no effect
+d_h= 0.2  ! no real effect
+N_h= 100 ! 
+d_crMax = 20.
+zeta_K= 0.02, 0.1,  0.2, .500, 1.500, 2.500, 3.500, 4.500, 5.500, 7.000, 8.500, 10.000, 12., 14., 17., 20., -1.
+ &end
+   --- ---------- -------- ------------- -   nohup ./Beam-SKA.sh  >Beam-SKA.log 2>&1  & 
+
+
+ &BeamPars 
+Base =   "SKx/Coarse"   ! 48 -- 300 MHz
+DataBase = "SKA/"
+AntennaLayout = .false., DistMax = 500.
+dN_tr=5
+N_phir = 9 ! 5 ! 9 ! 11  !no effect
+d_h= 0.1  ! 0.2  ! no real effect
+N_h= 400  ! 100 ! 
+d_crMax = 10.
+zeta_K= 0.02, 0.1,  0.2, .500, 1.500, 2.500, 3.500, 4.500, 5.500, 7.000, 8.500, 10.000, 12., 14., 17., 20., -1.
+ &end
+   --- ---------- -------- ------------- -   nohup ./Beam-SKA.sh  >Beam-SKA.log 2>&1  & 
+
+
+

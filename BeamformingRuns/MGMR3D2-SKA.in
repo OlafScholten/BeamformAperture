@@ -1,0 +1,69 @@
+!=? write namelist to stdout (omit !) ++++++++++++++++++++++++++++ Pragati ++++++++++++++++++++++++++
+ &ShPars IntegrateCurrent=-0.01
+Intensity_Weight=.false.
+OBSDIST_DIM=75 
+!SAMPLINGTIME=5.     ! in [ns]
+! SamplingTime=0.5
+Fit_stI=.true 
+!StParRange = 11    ! in down-sampled sample times for calculation of Stokes parameters
+StParRange = 150    ! in down-sampled sample times for calculation of Stokes parameters= number of time-trace samples written to file
+MOLIERERADIUS= 0  ! Used the default, varying for small xmax, 50 for large values
+F_lim=1.
+J0Q=0.22 
+J0T = 14.77, zen_B=22.19 , azi_B=-90.   ! direction magnetic field at LOFAR (49.5 mu T)
+RL_param=.true. , R_0=0.3 , L_0=220, 
+!X_max=674 , GROUNDLEVEL=  7.6
+!L_0=40,
+!R_0=0.5
+ tTrace_step=0.020
+SAMPLINGTIME=1.     ! in [ns]
+ nu_min=48. ,  nu_max= 300.
+!J0Q=0.0 
+!Zen_sh=43. , X_max=860 ! okay
+!Zen_sh=43. , X_max=700 ! 
+!Zen_sh=43. , X_max=800 !  
+!Zen_sh=43. , X_max=1000 !  
+!Zen_sh=43. , X_max=1100 !  
+Zen_sh=43. , X_max=900 !  
+ energy_sh=3624933134.61
+PlotBase="SKA"   ! 48 -- 300 MHz
+!PlotBase="plot00-up-L040R" ! SKA, 50-330 MHz  , 1ns sampling
+Fitting=.false.
+&end
+
+24. -20   ! shift_x [m], shift_y [m], alpha_vB [deg]  !30,10 or 10,20 or -10,30?
+
+xxstep
+
+-4,9,10,-11, -12, -13, 15, 16, 17, -19, 20, 21, -15
+"../runs/data/data_127944584xxx.dat" "-test" 
+
+-----------------------
+theta 0.
+-----------------------
+dist  25
+dist  65.
+dist 105
+dist 185
+---------------------
+grid  -20.
+dist  30
+dist  40
+dist  50
+
+   --- ---------- -------- ------------- -   nohup ./MGMR3D2-test.sh  >MGMR3D2-L40.log 2>&1  & 
+call GLE -d jpg -r 300 -o plot00-up-hcoarse\SrcKrnlMap-50_01000000.jpg  %GLEscr%\SrcKrnlFiltMap.gle %Workdir%/plot00-up-hcoarse\SrcKrnl-50_01000000
+call GLE -d jpg -r 300 -o plot00-up-hcoarse\SrcKrnlFiltMap-50_01000000.jpg  %GLEscr%\SrcKrnlFiltMap.gle %Workdir%/plot00-up-hcoarse\SrcKFilt-50_01000000
+
+step
+     8.100      103.121        -76.7   ;    8.100      103.121        -76.7   ;   42.325       94.035
+     6.167      192.267         84.9   ;    6.167       99.815         65.9   ;  -87.771      -47.533
+     5.004       90.960       -182.7   ;    5.004      107.858        117.7   ;  -18.333     -106.288
+
+
+call GLE -d jpg -r 300 -o plot00-up-hcoarse/Test_Weight.jpg  %GLEscr%\Test_Weight.gle %Workdir%/plot00-up-hcoarse/
+call GLE -d jpg -r 300 -o plot00-up-hcoarse/testKernel.jpg  %GLEscr%\Test_kernel_1-3.gle %Workdir%/plot00-up-hcoarse/
+call GLE -d jpg -r 300 -o plot00-up-hcoarse/WPSF.jpg  %GLEscr%\W_PSF.gle %Workdir%/plot00-up-hcoarse/
+call GLE -d jpg -r 300 -o plot00-up-hcoarse/currents.jpg  %GLEscr%\BeamFormCurr.gle %Workdir%/plot00-up-hcoarse/
+
+
