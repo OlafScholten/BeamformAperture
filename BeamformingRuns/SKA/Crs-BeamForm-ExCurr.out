@@ -1,0 +1,502 @@
+   start Initialize @ 14:55:41.814 -------------------------
+&BEAMPARS
+ BASE="SKA/Crs-            ",
+ KERNELBASE="SKx/Coarse          ",
+ DATABASE="SKA/                ",
+ ANTENNALAYOUT=F,
+ DEL_Z=  20.000000000000000     ,
+ DEL_TR=  20.000000000000000     ,
+ ZETA_K=  2.0000000000000000E-002, 0.10000000000000001     , 0.20000000000000001     , 0.50000000000000000     ,  1.5000000000000000     ,
+   2.5000000000000000     ,  3.5000000000000000     ,  4.5000000000000000     ,  5.5000000000000000     ,  7.0000000000000000     ,  8.5000000000000000     ,
+   10.000000000000000     ,  12.000000000000000     ,  14.000000000000000     ,  17.000000000000000     ,  20.000000000000000     , -1.0000000000000000     ,
+  8*0.0000000000000000       ,
+ DISTMAX=  500.00000000000000     ,
+ GOODQUAL=  5.0000000000000000     ,
+ FRACFOLD= 0.40000000000000002     ,
+ /
+ del_z, del_tr:   200.00000000000000        200.00000000000000     
+ Use regular radial antenna spacing.
+ Minimum distance of antennas to core=   0.0000000000000000      , max distance=   500.00000000000000     
+Antenna separation=  10.00[m], trace length= 1094[samples], sampling time= 0.300[m], offset=  100.0[m]
+Frequency bandwidth=  48.00 -- 300.00[MHz], ground level @ 0.000[m], Zenith angle=  43.000[deg], azimuth=   0.000
+ !E_max=           1   10.000000000000000        9209900.0000000000     
+ !E_max=           2   20.000000000000000        9700000.0000000000     
+ !E_max=           3   30.000000000000000        10816000.000000000     
+ !E_max=           4   40.000000000000000        11403000.000000000     
+ !E_max=           5   50.000000000000000        12370000.000000000     
+ !E_max=           6   60.000000000000000        13055000.000000000     
+ !E_max=           7   70.000000000000000        12807000.000000000     
+ !E_max=           8   80.000000000000000        13019000.000000000     
+ !E_max=           9   90.000000000000000        12364000.000000000     
+ !E_max=          10   100.00000000000000        11164000.000000000     
+ !E_max=          11   110.00000000000000        10781000.000000000     
+ !E_max=          12   120.00000000000000        9076300.0000000000     
+ !E_max=          13   130.00000000000000        8132500.0000000000     
+ !E_max=          14   140.00000000000000        7251900.0000000000     
+ !E_max=          15   150.00000000000000        5958700.0000000000     
+ !E_max=          16   160.00000000000000        4816400.0000000000     
+ !E_max=          17   170.00000000000000        4240300.0000000000     
+ !E_max=          18   180.00000000000000        3530500.0000000000     
+ !E_max=          19   190.00000000000000        2813400.0000000000     
+ !E_max=          20   200.00000000000000        2256200.0000000000     
+ !E_max=          21   210.00000000000000        1798600.0000000000     
+ !E_max=          22   220.00000000000000        1437600.0000000000     
+ !E_max=          23   230.00000000000000        1157100.0000000000     
+ !E_max=          24   240.00000000000000        952950.00000000000     
+ !E_max=          25   250.00000000000000        792220.00000000000     
+ !E_max=          26   260.00000000000000        636510.00000000000     
+ !E_max=          27   270.00000000000000        502010.00000000000     
+ !E_max=          28   280.00000000000000        425490.00000000000     
+ !E_max=          29   290.00000000000000        357830.00000000000     
+ !E_max=          30   300.00000000000000        292050.00000000000     
+ !E_max=          31   310.00000000000000        248220.00000000000     
+ !E_max=          32   320.00000000000000        204770.00000000000     
+ !E_max=          33   330.00000000000000        171200.00000000000     
+ !E_max=          34   340.00000000000000        141190.00000000000     
+ !E_max=          35   350.00000000000000        114920.00000000000     
+ !E_max=          36   360.00000000000000        98182.000000000000     
+ !E_max=          37   370.00000000000000        86379.000000000000     
+ !E_max=          38   380.00000000000000        98187.000000000000     
+ !E_max=          39   390.00000000000000        99244.000000000000     
+ !E_max=          40   400.00000000000000        76878.000000000000     
+ !E_max=          41   410.00000000000000        66422.000000000000     
+ !E_max=          42   420.00000000000000        78416.000000000000     
+ !E_max=          43   430.00000000000000        86952.000000000000     
+ !E_max=          44   440.00000000000000        94461.000000000000     
+ !E_max=          45   450.00000000000000        113770.00000000000     
+ !E_max=          46   460.00000000000000        118720.00000000000     
+ !E_max=          47   470.00000000000000        111970.00000000000     
+ !E_max=          48   480.00000000000000        103300.00000000000     
+ !E_max=          49   490.00000000000000        116320.00000000000     
+ !E_max=          50   500.00000000000000        96135.000000000000     
+ Timing off-set correction=  0.20019999999999999      [m]  0.79980000000000007       0.19969999999999999     
+ DistMax=   500.00000000000000      [m]
+ Generating atmosphere for shower zenith angle [degree]=   43.000000000000000     
+ !Atmosphere pendepth:   179.00888041644703        1415.2645958763896     
+ Reading file "SKx/Coarsex-SrcKrnl-43000000000.z"
+ ! Generating parameters, zeta_f=    20. rs_0=    0.0 Z_min=    10. Z_max=  8550. phi_0=    0. N_phi0=  1 label=43000000000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43000100000.z"
+ ! Generating parameters, zeta_f=   100. rs_0=    0.0 Z_min=    10. Z_max= 10050. phi_0=    0. N_phi0=  1 label=43000100000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43000200000.z"
+ ! Generating parameters, zeta_f=   200. rs_0=    0.0 Z_min=    10. Z_max= 12050. phi_0=    0. N_phi0=  1 label=43000200000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43000500000.z"
+ ! Generating parameters, zeta_f=   500. rs_0=    0.0 Z_min=    10. Z_max= 14050. phi_0=    0. N_phi0=  1 label=43000500000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43001500000.z"
+ ! Generating parameters, zeta_f=  1500. rs_0=    0.0 Z_min=    10. Z_max= 17050. phi_0=    0. N_phi0=  1 label=43001500000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43002500000.z"
+ ! Generating parameters, zeta_f=  2500. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43002500000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43003500000.z"
+ ! Generating parameters, zeta_f=  3500. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43003500000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43004500000.z"
+ ! Generating parameters, zeta_f=  4500. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43004500000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43005500000.z"
+ ! Generating parameters, zeta_f=  5500. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43005500000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43007000000.z"
+ ! Generating parameters, zeta_f=  7000. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43007000000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43008500000.z"
+ ! Generating parameters, zeta_f=  8500. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43008500000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43010000000.z"
+ ! Generating parameters, zeta_f= 10000. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43010000000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43012000000.z"
+ ! Generating parameters, zeta_f= 12000. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43012000000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43014000000.z"
+ ! Generating parameters, zeta_f= 14000. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43014000000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43017000000.z"
+ ! Generating parameters, zeta_f= 17000. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43017000000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ Reading file "SKx/Coarsex-SrcKrnl-43020000000.z"
+ ! Generating parameters, zeta_f= 20000. rs_0=    0.0 Z_min=    10. Z_max= 20050. phi_0=    0. N_phi0=  1 label=43020000000          N_h= 100 h_range= 20.0 N_phir=  5  dN_tr=  5 DistMax=   500.                            
+ SampleTime_old, SampleTime_new:  0.20000000000000001       0.29980000000000001      [m], nu_min, nu_max:   48.000000000000000        300.00000000000000      [MHz]
+ ** Padding increased to          151
+ !ReadKernel, hcnt_l,hcnt_u,ih_1,ih_2:        -132         167         -99         100
+!in time [m], hcnt_l,hcnt_u,ih_1,ih_2:   -39.57        50.07       -19.80        20.00       -50.00        50.20    
+ ******************** k=          27 ;SKA/Crs-x-BeamKer-Dc.dat
+Down-sampling to samples of 1.000[ns] and trace length of  100.13[m]= 334.01[ns], frequency filter from  47.9 till   299.4[MHz], steps of   3.0[MHz]
+ hcnt_l:hcnt_u,N_tr,N_zf        -132         167          99          99          49
+ writing file "SKA/Crs-x-KPSF-43000000000.dat"
+ writing file "SKA/Crs-x-KPwr-43000000000.dat"
+ writing file "SKA/Crs-x-KPSF-43000200000.dat"
+ writing file "SKA/Crs-x-KPwr-43000200000.dat"
+ writing file "SKA/Crs-x-KPSF-43000500000.dat"
+ writing file "SKA/Crs-x-KPwr-43000500000.dat"
+ writing file "SKA/Crs-x-KPSF-43001500000.dat"
+ writing file "SKA/Crs-x-KPwr-43001500000.dat"
+ writing file "SKA/Crs-x-KPSF-43002500000.dat"
+ writing file "SKA/Crs-x-KPwr-43002500000.dat"
+ writing file "SKA/Crs-x-KPSF-43003500000.dat"
+ writing file "SKA/Crs-x-KPwr-43003500000.dat"
+ writing file "SKA/Crs-x-KPSF-43004500000.dat"
+ writing file "SKA/Crs-x-KPwr-43004500000.dat"
+ writing file "SKA/Crs-x-KPSF-43005500000.dat"
+ writing file "SKA/Crs-x-KPwr-43005500000.dat"
+ writing file "SKA/Crs-x-KPSF-43007000000.dat"
+ writing file "SKA/Crs-x-KPwr-43007000000.dat"
+ writing file "SKA/Crs-x-KPSF-43008500000.dat"
+ writing file "SKA/Crs-x-KPwr-43008500000.dat"
+ writing file "SKA/Crs-x-KPSF-43010000000.dat"
+ writing file "SKA/Crs-x-KPwr-43010000000.dat"
+ writing file "SKA/Crs-x-KPSF-43012000000.dat"
+ writing file "SKA/Crs-x-KPwr-43012000000.dat"
+ writing file "SKA/Crs-x-KPSF-43014000000.dat"
+ writing file "SKA/Crs-x-KPwr-43014000000.dat"
+ writing file "SKA/Crs-x-KPSF-43017000000.dat"
+ writing file "SKA/Crs-x-KPwr-43017000000.dat"
+ N_PSF, dt_PSF:          16  0.29980000000000001     
+ writing file "SKA/Crs-x-BeamPwr-tt.dat"
+ writing file "SKA/Crs-y-BeamPwr-tt.dat"
+ Reading file "SKA/sh_Current.dat"   10.000000000000000             2000
+ writing file "SKA/Crs-x-BeamPwr-tst.dat"    20.000000000000000               99
+ !Grd_K*I test:        -100         167  -29.980000000000000        50.066600000000001     
+!Grd_K*I test:            1    220.0       1.4548E+06   1.9281E+06   0.7545      -0.3546       2.7114E+05   1.0382E+05    2.612    
+!Grd_K*I test:            2    420.0       1.2130E+06   1.3831E+06   0.8770       0.3530       4.0312E+05   1.4107E+05    2.858    
+!Grd_K*I test:            3    620.0       1.0169E+06   9.6816E+05    1.050       4.7088E-02   4.7543E+05   2.6878E+05    1.769    
+!Grd_K*I test:            4    820.0       8.9386E+05   7.4022E+05    1.208       0.4038       5.9726E+05   3.7198E+05    1.606    
+!Grd_K*I test:            5    1020.       8.6597E+05   6.3598E+05    1.362       0.6645       7.0208E+05   4.2739E+05    1.643    
+!Grd_K*I test:            6    1220.       9.4729E+05   7.1923E+05    1.317       0.8949       8.2512E+05   5.8767E+05    1.404    
+!Grd_K*I test:            7    1420.       1.0412E+06   8.7131E+05    1.195       0.9396       9.1500E+05   7.2719E+05    1.258    
+!Grd_K*I test:            8    1620.       1.2066E+06   1.0751E+06    1.122       0.9579       1.0756E+06   9.4202E+05    1.142    
+!Grd_K*I test:            9    1820.       1.4177E+06   1.2490E+06    1.135       0.9641       1.2861E+06   1.0775E+06    1.194    
+!Grd_K*I test:           10    2020.       1.6383E+06   1.4960E+06    1.095       0.9817       1.5044E+06   1.3484E+06    1.116    
+!Grd_K*I test:           11    2220.       1.8645E+06   1.7329E+06    1.076       0.9780       1.7186E+06   1.5767E+06    1.090    
+!Grd_K*I test:           12    2420.       2.1155E+06   1.9707E+06    1.073       0.9843       1.9636E+06   1.8069E+06    1.087    
+!Grd_K*I test:           13    2620.       2.3934E+06   2.2730E+06    1.053       0.9872       2.2368E+06   2.1106E+06    1.060    
+!Grd_K*I test:           14    2820.       2.7026E+06   2.5298E+06    1.068       0.9880       2.5543E+06   2.3659E+06    1.080    
+!Grd_K*I test:           15    3020.       3.0093E+06   2.9204E+06    1.030       0.9910       2.8698E+06   2.7566E+06    1.041    
+!Grd_K*I test:           16    3220.       3.3217E+06   3.2306E+06    1.028       0.9899       3.1851E+06   3.0798E+06    1.034    
+!Grd_K*I test:           17    3420.       3.6380E+06   3.5925E+06    1.013       0.9900       3.5130E+06   3.4343E+06    1.023    
+!Grd_K*I test:           18    3620.       3.9666E+06   3.9327E+06    1.009       0.9887       3.8554E+06   3.7723E+06    1.022    
+!Grd_K*I test:           19    3820.       4.3126E+06   4.2342E+06    1.018       0.9898       4.2081E+06   4.0858E+06    1.030    
+!Grd_K*I test:           20    4020.       4.6792E+06   4.6390E+06    1.009       0.9900       4.5839E+06   4.4891E+06    1.021    
+!Grd_K*I test:           21    4220.       5.0288E+06   4.9563E+06    1.015       0.9887       4.9438E+06   4.8029E+06    1.029    
+!Grd_K*I test:           22    4420.       5.3547E+06   5.2852E+06    1.013       0.9892       5.2770E+06   5.1361E+06    1.027    
+!Grd_K*I test:           23    4620.       5.6835E+06   5.6383E+06    1.008       0.9894       5.6100E+06   5.4856E+06    1.023    
+!Grd_K*I test:           24    4820.       6.0084E+06   5.9658E+06    1.007       0.9888       5.9355E+06   5.7999E+06    1.023    
+!Grd_K*I test:           25    5020.       6.3293E+06   6.2463E+06    1.013       0.9888       6.2456E+06   6.0620E+06    1.030    
+!Grd_K*I test:           26    5220.       6.6173E+06   6.5042E+06    1.017       0.9892       6.5250E+06   6.3020E+06    1.035    
+!Grd_K*I test:           27    5420.       6.8819E+06   6.7569E+06    1.019       0.9894       6.7765E+06   6.5321E+06    1.037    
+!Grd_K*I test:           28    5620.       7.1293E+06   6.9989E+06    1.019       0.9898       7.0003E+06   6.7475E+06    1.037    
+!Grd_K*I test:           29    5820.       7.2972E+06   7.2153E+06    1.011       0.9896       7.1478E+06   6.9274E+06    1.032    
+!Grd_K*I test:           30    6020.       7.4546E+06   7.3905E+06    1.009       0.9891       7.2722E+06   7.0603E+06    1.030    
+!Grd_K*I test:           31    6220.       7.5924E+06   7.5438E+06    1.006       0.9889       7.3770E+06   7.1681E+06    1.029    
+!Grd_K*I test:           32    6420.       7.6943E+06   7.6670E+06    1.004       0.9886       7.4371E+06   7.2376E+06    1.028    
+!Grd_K*I test:           33    6620.       7.7834E+06   7.7503E+06    1.004       0.9891       7.4778E+06   7.2607E+06    1.030    
+!Grd_K*I test:           34    6820.       7.8247E+06   7.7930E+06    1.004       0.9889       7.4695E+06   7.2409E+06    1.032    
+!Grd_K*I test:           35    7020.       7.7969E+06   7.7972E+06    1.000       0.9894       7.3910E+06   7.1824E+06    1.029    
+!Grd_K*I test:           36    7220.       7.7964E+06   7.7666E+06    1.004       0.9892       7.3492E+06   7.0910E+06    1.036    
+!Grd_K*I test:           37    7420.       7.7395E+06   7.7061E+06    1.004       0.9893       7.2315E+06   6.9730E+06    1.037    
+!Grd_K*I test:           38    7620.       7.6488E+06   7.6223E+06    1.003       0.9895       7.0912E+06   6.8369E+06    1.037    
+!Grd_K*I test:           39    7820.       7.5604E+06   7.5157E+06    1.006       0.9895       6.9492E+06   6.6822E+06    1.040    
+!Grd_K*I test:           40    8020.       7.4327E+06   7.3856E+06    1.006       0.9899       6.7755E+06   6.5083E+06    1.041    
+!Grd_K*I test:           41    8220.       7.2965E+06   7.2343E+06    1.009       0.9906       6.5889E+06   6.3200E+06    1.043    
+!Grd_K*I test:           42    8420.       7.1171E+06   7.0649E+06    1.007       0.9905       6.3753E+06   6.1210E+06    1.042    
+!Grd_K*I test:           43    8620.       6.9353E+06   6.8813E+06    1.008       0.9909       6.1543E+06   5.9162E+06    1.040    
+!Grd_K*I test:           44    8820.       6.7721E+06   6.6879E+06    1.013       0.9907       5.9764E+06   5.7104E+06    1.047    
+!Grd_K*I test:           45    9020.       6.5552E+06   6.4880E+06    1.010       0.9908       5.7356E+06   5.5062E+06    1.042    
+!Grd_K*I test:           46    9220.       6.3555E+06   6.2836E+06    1.011       0.9907       5.5292E+06   5.3047E+06    1.042    
+!Grd_K*I test:           47    9420.       6.1517E+06   6.0773E+06    1.012       0.9909       5.3174E+06   5.1076E+06    1.041    
+!Grd_K*I test:           48    9620.       5.9525E+06   5.8711E+06    1.014       0.9911       5.1160E+06   4.9167E+06    1.041    
+!Grd_K*I test:           49    9820.       5.7328E+06   5.6670E+06    1.012       0.9906       4.9078E+06   4.7330E+06    1.037    
+!Grd_K*I test:           50   1.0020E+04   5.5332E+06   5.4668E+06    1.012       0.9907       4.7086E+06   4.5569E+06    1.033    
+!Grd_K*I test:           51   1.0220E+04   5.3316E+06   5.2723E+06    1.011       0.9909       4.5190E+06   4.3893E+06    1.030    
+!Grd_K*I test:           52   1.0420E+04   5.1514E+06   5.0851E+06    1.013       0.9910       4.3631E+06   4.2308E+06    1.031    
+!Grd_K*I test:           53   1.0620E+04   4.9768E+06   4.9061E+06    1.014       0.9910       4.1939E+06   4.0816E+06    1.028    
+!Grd_K*I test:           54   1.0820E+04   4.8008E+06   4.7360E+06    1.014       0.9907       4.0289E+06   3.9416E+06    1.022    
+!Grd_K*I test:           55   1.1020E+04   4.6521E+06   4.5756E+06    1.017       0.9911       3.9002E+06   3.8105E+06    1.024    
+!Grd_K*I test:           56   1.1220E+04   4.4778E+06   4.4249E+06    1.012       0.9912       3.7538E+06   3.6877E+06    1.018    
+!Grd_K*I test:           57   1.1420E+04   4.3481E+06   4.2843E+06    1.015       0.9911       3.6255E+06   3.5729E+06    1.015    
+!Grd_K*I test:           58   1.1620E+04   4.1752E+06   4.1536E+06    1.005       0.9913       3.4743E+06   3.4655E+06    1.003    
+!Grd_K*I test:           59   1.1820E+04   4.0692E+06   4.0326E+06    1.009       0.9905       3.3770E+06   3.3648E+06    1.004    
+!Grd_K*I test:           60   1.2020E+04   3.9421E+06   3.9209E+06    1.005       0.9897       3.2598E+06   3.2704E+06   0.9968    
+!Grd_K*I test:           61   1.2220E+04   3.8211E+06   3.8181E+06    1.001       0.9904       3.1526E+06   3.1815E+06   0.9909    
+!Grd_K*I test:           62   1.2420E+04   3.7308E+06   3.7236E+06    1.002       0.9904       3.0643E+06   3.0978E+06   0.9892    
+!Grd_K*I test:           63   1.2620E+04   3.6675E+06   3.6369E+06    1.008       0.9895       2.9932E+06   3.0188E+06   0.9915    
+!Grd_K*I test:           64   1.2820E+04   3.5876E+06   3.5575E+06    1.008       0.9904       2.9232E+06   2.9441E+06   0.9929    
+!Grd_K*I test:           65   1.3020E+04   3.5190E+06   3.4847E+06    1.010       0.9896       2.8362E+06   2.8732E+06   0.9872    
+!Grd_K*I test:           66   1.3220E+04   3.4322E+06   3.4179E+06    1.004       0.9894       2.7580E+06   2.8057E+06   0.9830    
+!Grd_K*I test:           67   1.3420E+04   3.3765E+06   3.3567E+06    1.006       0.9895       2.6810E+06   2.7413E+06   0.9780    
+!Grd_K*I test:           68   1.3620E+04   3.3153E+06   3.3005E+06    1.004       0.9885       2.6194E+06   2.6797E+06   0.9775    
+!Grd_K*I test:           69   1.3820E+04   3.2496E+06   3.2488E+06    1.000       0.9884       2.5278E+06   2.6203E+06   0.9647    
+!Grd_K*I test:           70   1.4020E+04   3.2056E+06   3.2012E+06    1.001       0.9875       2.4831E+06   2.5632E+06   0.9688    
+!Grd_K*I test:           71   1.4220E+04   3.1601E+06   3.1572E+06    1.001       0.9875       2.4224E+06   2.5081E+06   0.9658    
+!Grd_K*I test:           72   1.4420E+04   3.1393E+06   3.1165E+06    1.007       0.9876       2.3921E+06   2.4550E+06   0.9744    
+!Grd_K*I test:           73   1.4620E+04   3.0776E+06   3.0787E+06   0.9997       0.9875       2.3143E+06   2.4038E+06   0.9628    
+!Grd_K*I test:           74   1.4820E+04   3.0638E+06   3.0434E+06    1.007       0.9871       2.2805E+06   2.3543E+06   0.9687    
+!Grd_K*I test:           75   1.5020E+04   3.0373E+06   3.0104E+06    1.009       0.9872       2.2403E+06   2.3064E+06   0.9713    
+!Grd_K*I test:           76   1.5220E+04   2.9894E+06   2.9794E+06    1.003       0.9864       2.1782E+06   2.2600E+06   0.9638    
+!Grd_K*I test:           77   1.5420E+04   2.9527E+06   2.9502E+06    1.001       0.9869       2.1278E+06   2.2151E+06   0.9606    
+!Grd_K*I test:           78   1.5620E+04   2.9425E+06   2.9226E+06    1.007       0.9876       2.1025E+06   2.1715E+06   0.9682    
+!Grd_K*I test:           79   1.5820E+04   2.9204E+06   2.8966E+06    1.008       0.9869       2.0632E+06   2.1292E+06   0.9690    
+!Grd_K*I test:           80   1.6020E+04   2.8734E+06   2.8719E+06    1.001       0.9855       1.9895E+06   2.0881E+06   0.9528    
+!Grd_K*I test:           81   1.6220E+04   2.8441E+06   2.8484E+06   0.9985       0.9854       1.9518E+06   2.0482E+06   0.9529    
+!Grd_K*I test:           82   1.6420E+04   2.8137E+06   2.8261E+06   0.9956       0.9852       1.9036E+06   2.0094E+06   0.9474    
+!Grd_K*I test:           83   1.6620E+04   2.7821E+06   2.8049E+06   0.9919       0.9851       1.8531E+06   1.9717E+06   0.9399    
+!Grd_K*I test:           84   1.6820E+04   2.7612E+06   2.7847E+06   0.9916       0.9853       1.8184E+06   1.9349E+06   0.9398    
+!Grd_K*I test:           85   1.7020E+04   2.7371E+06   2.7655E+06   0.9897       0.9846       1.7722E+06   1.8992E+06   0.9331    
+!Grd_K*I test:           86   1.7220E+04   2.7247E+06   2.7472E+06   0.9918       0.9841       1.7550E+06   1.8644E+06   0.9413    
+!Grd_K*I test:           87   1.7420E+04   2.7087E+06   2.7297E+06   0.9923       0.9842       1.7140E+06   1.8305E+06   0.9363    
+!Grd_K*I test:           88   1.7620E+04   2.6987E+06   2.7130E+06   0.9947       0.9838       1.6886E+06   1.7975E+06   0.9394    
+!Grd_K*I test:           89   1.7820E+04   2.6831E+06   2.6970E+06   0.9949       0.9849       1.6646E+06   1.7654E+06   0.9429    
+!Grd_K*I test:           90   1.8020E+04   2.6899E+06   2.6817E+06    1.003       0.9846       1.6534E+06   1.7341E+06   0.9534    
+!Grd_K*I test:           91   1.8220E+04   2.6732E+06   2.6670E+06    1.002       0.9837       1.6166E+06   1.7037E+06   0.9489    
+!Grd_K*I test:           92   1.8420E+04   2.6516E+06   2.6528E+06   0.9996       0.9838       1.5748E+06   1.6740E+06   0.9408    
+!Grd_K*I test:           93   1.8620E+04   2.6372E+06   2.6392E+06   0.9992       0.9839       1.5478E+06   1.6452E+06   0.9408    
+!Grd_K*I test:           94   1.8820E+04   2.6201E+06   2.6260E+06   0.9978       0.9826       1.5151E+06   1.6171E+06   0.9369    
+!Grd_K*I test:           95   1.9020E+04   2.6154E+06   2.6133E+06    1.001       0.9827       1.5049E+06   1.5899E+06   0.9465    
+!Grd_K*I test:           96   1.9220E+04   2.5891E+06   2.6009E+06   0.9954       0.9823       1.4666E+06   1.5633E+06   0.9381    
+!Grd_K*I test:           97   1.9420E+04   2.5800E+06   2.5890E+06   0.9966       0.9826       1.4546E+06   1.5375E+06   0.9461    
+!Grd_K*I test:           98   1.9620E+04   2.5603E+06   2.5773E+06   0.9934       0.9811       1.4282E+06   1.5124E+06   0.9443    
+!Grd_K*I test:           99   1.9820E+04   2.5377E+06   2.5661E+06   0.9890       0.9801       1.3750E+06   1.4880E+06   0.9241    
+ writing file "SKA/Crs-x-BeamPwr-tstK.dat"    20.000000000000000               99
+ writing file "SKA/Crs-x-BeamPwr-w.dat"    20.000000000000000               99
+ writing file "SKA/Crs-y-BeamPwr-tst.dat"    20.000000000000000               99
+ !Grd_K*I test:        -100         167  -29.980000000000000        50.066600000000001     
+!Grd_K*I AB=0:            1    220.0        0.000        0.000    
+ writing file "SKA/Crs-y-BeamPwr-tstK.dat"    20.000000000000000               99
+ writing file "SKA/Crs-y-BeamPwr-w.dat"    20.000000000000000               99
+ h-dims(main):        -100         993 ;        -132         167
+ Timespan for beaming-power calculations:  -29.980000000000000        50.066600000000001     
+For frac= 0.40  23 current  gridpoints at   0   8   9  10  11  12  13  15  17  19  21  23  26  29  32  36  41  47  55  66  82  97  99
+ NDc:          23
+ Convergence criterium:           0
+ J_fit(Neq):          22  -7193908.4623837806        26106018.975370377        39954079.386873834        62911202.211234093        67149234.293427274        74491196.678487673        66698366.711840808        113204073.89621973        124843091.45902449        133920484.01906765        138074680.70589674        160965505.27779531        140899142.53944159        147887037.22905374        129593896.02241942        96389234.544247061        57861129.118846588        23187404.627311431        5272835.5707255742        1747592.3140077656        347322.80798720755        3066988.9980767900     
+  Folding Fit            0  -0.1254E+06     , % off:   -6.151    
+  Folding Fit            1   0.1038E+06     , % off:    56.86    
+  Folding Fit            2   0.1411E+06     , % off:   -31.67    
+  Folding Fit            3   0.2688E+06     , % off:    2.640    
+  Folding Fit            4   0.3720E+06     , % off:   -2.837    
+  Folding Fit            5   0.4274E+06     , % off:   -14.46    
+  Folding Fit            6   0.5877E+06     , % off:   -3.360    
+  Folding Fit            7   0.7272E+06     , % off:    2.638    
+  Folding Fit            8   0.9420E+06     , % off:    8.150    
+  Folding Fit            9   0.1077E+07     , % off:  -0.6626    
+  Folding Fit           10   0.1348E+07     , % off:   0.3599E-01
+  Folding Fit           11   0.1577E+07     , % off:   0.2234    
+  Folding Fit           12   0.1807E+07     , % off:   -1.089    
+  Folding Fit           13   0.2111E+07     , % off:    1.482    
+  Folding Fit           14   0.2366E+07     , % off:   -1.278    
+  Folding Fit           15   0.2757E+07     , % off:   0.4272    
+  Folding Fit           16   0.3080E+07     , % off:  -0.2305    
+  Folding Fit           17   0.3434E+07     , % off:   0.1927    
+  Folding Fit           18   0.3772E+07     , % off:   0.8346E-01
+  Folding Fit           19   0.4086E+07     , % off:  -0.5867    
+  Folding Fit           20   0.4489E+07     , % off:   0.6182    
+  Folding Fit           21   0.4803E+07     , % off:  -0.5471E-01
+  Folding Fit           22   0.5136E+07     , % off:  -0.2129    
+  Folding Fit           23   0.5486E+07     , % off:  -0.8879E-01
+  Folding Fit           24   0.5800E+07     , % off:   0.1745    
+  Folding Fit           25   0.6062E+07     , % off:   0.2008E-01
+  Folding Fit           26   0.6302E+07     , % off:  -0.3912E-02
+  Folding Fit           27   0.6532E+07     , % off:  -0.3419E-01
+  Folding Fit           28   0.6747E+07     , % off:  -0.1389    
+  Folding Fit           29   0.6927E+07     , % off:   0.1375    
+  Folding Fit           30   0.7060E+07     , % off:   0.4718E-01
+  Folding Fit           31   0.7168E+07     , % off:  -0.6552E-01
+  Folding Fit           32   0.7238E+07     , % off:   0.6400E-01
+  Folding Fit           33   0.7261E+07     , % off:  -0.9393E-01
+  Folding Fit           34   0.7241E+07     , % off:  -0.1217    
+  Folding Fit           35   0.7182E+07     , % off:   0.3540    
+  Folding Fit           36   0.7091E+07     , % off:  -0.1941    
+  Folding Fit           37   0.6973E+07     , % off:  -0.4608E-01
+  Folding Fit           38   0.6837E+07     , % off:   0.9439E-01
+  Folding Fit           39   0.6682E+07     , % off:  -0.4585E-01
+  Folding Fit           40   0.6508E+07     , % off:  -0.2104E-01
+  Folding Fit           41   0.6320E+07     , % off:  -0.9431E-01
+  Folding Fit           42   0.6121E+07     , % off:   0.9326E-01
+  Folding Fit           43   0.5916E+07     , % off:   0.2394    
+  Folding Fit           44   0.5710E+07     , % off:  -0.3412    
+  Folding Fit           45   0.5506E+07     , % off:   0.1221    
+  Folding Fit           46   0.5305E+07     , % off:   0.2911E-02
+  Folding Fit           47   0.5108E+07     , % off:   0.1196E-01
+  Folding Fit           48   0.4917E+07     , % off:  -0.1009    
+  Folding Fit           49   0.4733E+07     , % off:   0.3224E-01
+  Folding Fit           50   0.4557E+07     , % off:   0.1181    
+  Folding Fit           51   0.4389E+07     , % off:   0.2795    
+  Folding Fit           52   0.4231E+07     , % off:  -0.1353    
+  Folding Fit           53   0.4082E+07     , % off:  -0.7557E-01
+  Folding Fit           54   0.3942E+07     , % off:   0.8203E-01
+  Folding Fit           55   0.3810E+07     , % off:  -0.4173    
+  Folding Fit           56   0.3688E+07     , % off:  -0.2545    
+  Folding Fit           57   0.3573E+07     , % off:  -0.3540    
+  Folding Fit           58   0.3465E+07     , % off:   0.4665    
+  Folding Fit           59   0.3365E+07     , % off:  -0.1174E-01
+  Folding Fit           60   0.3270E+07     , % off:   0.3065    
+  Folding Fit           61   0.3182E+07     , % off:   0.5348    
+  Folding Fit           62   0.3098E+07     , % off:   0.4166    
+  Folding Fit           63   0.3019E+07     , % off:  -0.1104    
+  Folding Fit           64   0.2944E+07     , % off:  -0.5359    
+  Folding Fit           65   0.2873E+07     , % off:  -0.2530    
+  Folding Fit           66   0.2806E+07     , % off:  -0.1878    
+  Folding Fit           67   0.2741E+07     , % off:   0.1239E-01
+  Folding Fit           68   0.2680E+07     , % off:  -0.3293    
+  Folding Fit           69   0.2620E+07     , % off:   0.5747    
+  Folding Fit           70   0.2563E+07     , % off:   0.2187E-01
+  Folding Fit           71   0.2508E+07     , % off:   0.2984    
+  Folding Fit           72   0.2455E+07     , % off:  -0.5498    
+  Folding Fit           73   0.2404E+07     , % off:   0.5212    
+  Folding Fit           74   0.2354E+07     , % off:  -0.1213    
+  Folding Fit           75   0.2306E+07     , % off:  -0.4988    
+  Folding Fit           76   0.2260E+07     , % off:   0.2222    
+  Folding Fit           77   0.2215E+07     , % off:   0.4682    
+  Folding Fit           78   0.2172E+07     , % off:  -0.4709    
+  Folding Fit           79   0.2129E+07     , % off:  -0.8279    
+  Folding Fit           80   0.2088E+07     , % off:   0.4397    
+  Folding Fit           81   0.2048E+07     , % off:  -0.4203E-02
+  Folding Fit           82   0.2009E+07     , % off:   0.3750E-01
+  Folding Fit           83   0.1972E+07     , % off:   0.1853    
+  Folding Fit           84   0.1935E+07     , % off:  -0.2185    
+  Folding Fit           85   0.1899E+07     , % off:   0.2997    
+  Folding Fit           86   0.1864E+07     , % off:  -0.2317    
+  Folding Fit           87   0.1830E+07     , % off:   0.4494    
+  Folding Fit           88   0.1798E+07     , % off:   0.3267    
+  Folding Fit           89   0.1765E+07     , % off:   0.1040    
+  Folding Fit           90   0.1734E+07     , % off:  -0.7684    
+  Folding Fit           91   0.1704E+07     , % off:  -0.2028    
+  Folding Fit           92   0.1674E+07     , % off:   0.6698    
+  Folding Fit           93   0.1645E+07     , % off:   0.6680    
+  Folding Fit           94   0.1617E+07     , % off:   0.8321    
+  Folding Fit           95   0.1590E+07     , % off:  -0.2898    
+  Folding Fit           96   0.1563E+07     , % off:   0.2812    
+  Folding Fit           97   0.1538E+07     , % off:  -0.9139    
+  Folding Fit           98   0.1512E+07     , % off:   -1.319    
+  Folding Fit           99   0.1488E+07     , % off:   0.3370    
+ ChiSq:   27172636178.518078        1603804802024106.8       0.41161399475909705      % in amplitude
+ writing file "SKA/Crs-x-BeamPwr-a.dat"    20.000000000000000               99
+ ------------------- Power-weight fit ------------------
+ ------------------- PSF fit ------------------
+ -- Fitting parameter  4, X_max(1) =    850.0    
+ -- Fitting parameter 10, Lam_x or L(1) =    200.5    
+Fitting-try=  1, Chi^2= 0.12945E+14, Chi^2/powr= 0.80716E-02; Fit Parameters= 850.000    , 200.463    ,
+Fitting-try=  1, Chi^2= 0.12938E+14, Chi^2/powr= 0.80670E-02; Fit Parameters= 850.013    , 200.463    ,
+Fitting-try=  1, Chi^2= 0.12947E+14, Chi^2/powr= 0.80725E-02; Fit Parameters= 850.000    , 200.466    ,
+nondefault values....
+ rfctol.... v(32) =  0.1000000E-05
+ dltfdj.... v(36) =  0.1490116E-04
+ dltfdc.... v(40) =  0.6055454E-01
+ delta0.... v(44) =  0.1490116E-03
+Fitting-try=  2, Chi^2= 0.12945E+14, Chi^2/powr= 0.80711E-02; Fit Parameters= 850.001    , 200.462    ,
+Fitting-try=  3, Chi^2= 0.12942E+14, Chi^2/powr= 0.80697E-02; Fit Parameters= 850.003    , 200.460    ,
+Fitting-try=  4, Chi^2= 0.12933E+14, Chi^2/powr= 0.80641E-02; Fit Parameters= 850.013    , 200.454    ,
+Fitting-try=  5, Chi^2= 0.12897E+14, Chi^2/powr= 0.80417E-02; Fit Parameters= 850.053    , 200.427    ,
+Fitting-try=  6, Chi^2= 0.12754E+14, Chi^2/powr= 0.79524E-02; Fit Parameters= 850.212    , 200.321    ,
+Fitting-try=  7, Chi^2= 0.12190E+14, Chi^2/powr= 0.76007E-02; Fit Parameters= 850.849    , 199.901    ,
+Fitting-try=  8, Chi^2= 0.10080E+14, Chi^2/powr= 0.62848E-02; Fit Parameters= 853.443    , 198.275    ,
+Fitting-try=  9, Chi^2= 0.39214E+13, Chi^2/powr= 0.24451E-02; Fit Parameters= 865.516    , 193.607    ,
+Fitting-try=  9, Chi^2= 0.39179E+13, Chi^2/powr= 0.24429E-02; Fit Parameters= 865.529    , 193.607    ,
+Fitting-try=  9, Chi^2= 0.39220E+13, Chi^2/powr= 0.24454E-02; Fit Parameters= 865.516    , 193.610    ,
+Fitting-try= 10, Chi^2= 0.16145E+13, Chi^2/powr= 0.10067E-02; Fit Parameters= 886.084    , 198.212    ,
+Fitting-try= 10, Chi^2= 0.16144E+13, Chi^2/powr= 0.10066E-02; Fit Parameters= 886.097    , 198.212    ,
+Fitting-try= 10, Chi^2= 0.16146E+13, Chi^2/powr= 0.10067E-02; Fit Parameters= 886.084    , 198.215    ,
+Fitting-try= 11, Chi^2= 0.15841E+13, Chi^2/powr= 0.98770E-03; Fit Parameters= 883.948    , 195.376    ,
+Fitting-try= 11, Chi^2= 0.15840E+13, Chi^2/powr= 0.98768E-03; Fit Parameters= 883.961    , 195.376    ,
+Fitting-try= 11, Chi^2= 0.15841E+13, Chi^2/powr= 0.98770E-03; Fit Parameters= 883.948    , 195.379    ,
+Fitting-try= 12, Chi^2= 0.15838E+13, Chi^2/powr= 0.98755E-03; Fit Parameters= 884.036    , 195.286    ,
+Fitting-try= 12, Chi^2= 0.15838E+13, Chi^2/powr= 0.98755E-03; Fit Parameters= 884.050    , 195.286    ,
+Fitting-try= 12, Chi^2= 0.15838E+13, Chi^2/powr= 0.98755E-03; Fit Parameters= 884.036    , 195.289    ,
+Fitting-try= 13, Chi^2= 0.15838E+13, Chi^2/powr= 0.98755E-03; Fit Parameters= 884.037    , 195.286    ,
+Fitting-try= 13, Chi^2= 0.15838E+13, Chi^2/powr= 0.98755E-03; Fit Parameters= 884.050    , 195.286    ,
+Fitting-try= 13, Chi^2= 0.15838E+13, Chi^2/powr= 0.98755E-03; Fit Parameters= 884.037    , 195.289    ,
+Fitting-try= 14, Chi^2= 0.23789E+14, Chi^2/powr= 0.14833E-01; Fit Parameters= 937.570    , 195.286    ,
+Fitting-try= 15, Chi^2= 0.24058E+14, Chi^2/powr= 0.15001E-01; Fit Parameters= 830.505    , 195.286    ,
+Fitting-try= 16, Chi^2= 0.27741E+13, Chi^2/powr= 0.17297E-02; Fit Parameters= 884.037    , 207.112    ,
+Fitting-try= 17, Chi^2= 0.16220E+14, Chi^2/powr= 0.10114E-01; Fit Parameters= 937.570    , 207.112    ,
+Fitting-try= 18, Chi^2= 0.28239E+13, Chi^2/powr= 0.17607E-02; Fit Parameters= 884.037    , 183.461    ,
+ Hessian:
+   7795529453.9515409     
+  -6918208935.4134579        8689462525.1340008     
+  
+Relative function convergence.
+  
+ function     0.791920E+12   reldx        0.531996E-06
+ func. evals      13         grad. evals       6
+ preldf       0.321998E-08   npreldf      0.321998E-08
+  
+    5 extra function evaluations for covariance.
+ 
+     I      Final X(I)        D(I)          G(I)
+ 
+    1     0.884037E+03     0.893E+05     0.257E+03
+    2     0.195286E+03     0.977E+05    -0.285E+03
+  
+Covariance = scale * inverse ( H )
+  
+ row  1    0.7065E+01
+ row  2    0.5625E+01  0.6338E+01
+Result, chi^2/ndf=    0.16162E+11
+# fie calls= 18 and # of iterations=  5
+ Best fit recalculation
+ EnergyCR, X_max, L_0, R_0:   159153586.08896908        884.03728205439734        195.28627350442164       0.27160000801086426     
+Fitting-try= -1, Chi^2= 0.15838E+13, Chi^2/powr= 0.98755E-03; Fit Parameters= 884.037    , 195.286    ,
+ chi^2/df=   3.1903267297831918E-002
+ ------- summary of all fit results for PSF fit - x ------------------
+Fit# 1, qual=   3.127%, I_m=   0.1592E+09    0.000        0.000    , X_m=  884.0    0.0    0.0[g/cm^], R/lambda=   0.27, L/X_0= 183.46
+ ===================== end fitting for PSF fit - x ===================
+ ------------------- power-Kernel fit ------------------
+ -- Fitting parameter  4, X_max(1) =    850.0    
+ -- Fitting parameter 10, Lam_x or L(1) =    200.0    
+Fitting-try=  1, Chi^2= 0.13760E+14, Chi^2/powr= 0.66224E-02; Fit Parameters= 850.000    , 200.000    ,
+Fitting-try=  1, Chi^2= 0.13752E+14, Chi^2/powr= 0.66185E-02; Fit Parameters= 850.013    , 200.000    ,
+Fitting-try=  1, Chi^2= 0.13761E+14, Chi^2/powr= 0.66231E-02; Fit Parameters= 850.000    , 200.003    ,
+nondefault values....
+ rfctol.... v(32) =  0.1000000E-05
+ dltfdj.... v(36) =  0.1490116E-04
+ dltfdc.... v(40) =  0.6055454E-01
+ delta0.... v(44) =  0.1490116E-03
+Fitting-try=  2, Chi^2= 0.13759E+14, Chi^2/powr= 0.66220E-02; Fit Parameters= 850.001    , 199.999    ,
+Fitting-try=  3, Chi^2= 0.13757E+14, Chi^2/powr= 0.66208E-02; Fit Parameters= 850.003    , 199.997    ,
+Fitting-try=  4, Chi^2= 0.13747E+14, Chi^2/powr= 0.66161E-02; Fit Parameters= 850.013    , 199.990    ,
+Fitting-try=  5, Chi^2= 0.13707E+14, Chi^2/powr= 0.65971E-02; Fit Parameters= 850.051    , 199.960    ,
+Fitting-try=  6, Chi^2= 0.13550E+14, Chi^2/powr= 0.65216E-02; Fit Parameters= 850.204    , 199.840    ,
+Fitting-try=  7, Chi^2= 0.12932E+14, Chi^2/powr= 0.62241E-02; Fit Parameters= 850.818    , 199.362    ,
+Fitting-try=  8, Chi^2= 0.10613E+14, Chi^2/powr= 0.51077E-02; Fit Parameters= 853.307    , 197.492    ,
+Fitting-try=  9, Chi^2= 0.37729E+13, Chi^2/powr= 0.18158E-02; Fit Parameters= 864.383    , 191.321    ,
+Fitting-try=  9, Chi^2= 0.37689E+13, Chi^2/powr= 0.18139E-02; Fit Parameters= 864.396    , 191.321    ,
+Fitting-try=  9, Chi^2= 0.37735E+13, Chi^2/powr= 0.18161E-02; Fit Parameters= 864.383    , 191.324    ,
+Fitting-try= 10, Chi^2= 0.81757E+12, Chi^2/powr= 0.39348E-03; Fit Parameters= 884.805    , 193.432    ,
+Fitting-try= 10, Chi^2= 0.81747E+12, Chi^2/powr= 0.39344E-03; Fit Parameters= 884.819    , 193.432    ,
+Fitting-try= 10, Chi^2= 0.81762E+12, Chi^2/powr= 0.39351E-03; Fit Parameters= 884.805    , 193.435    ,
+Fitting-try= 11, Chi^2= 0.79809E+12, Chi^2/powr= 0.38411E-03; Fit Parameters= 883.448    , 191.063    ,
+Fitting-try= 11, Chi^2= 0.79808E+12, Chi^2/powr= 0.38410E-03; Fit Parameters= 883.461    , 191.063    ,
+Fitting-try= 11, Chi^2= 0.79809E+12, Chi^2/powr= 0.38411E-03; Fit Parameters= 883.448    , 191.066    ,
+Fitting-try= 12, Chi^2= 0.79807E+12, Chi^2/powr= 0.38410E-03; Fit Parameters= 883.466    , 191.026    ,
+Fitting-try= 12, Chi^2= 0.79807E+12, Chi^2/powr= 0.38410E-03; Fit Parameters= 883.479    , 191.026    ,
+Fitting-try= 12, Chi^2= 0.79807E+12, Chi^2/powr= 0.38410E-03; Fit Parameters= 883.466    , 191.029    ,
+Fitting-try= 13, Chi^2= 0.79807E+12, Chi^2/powr= 0.38410E-03; Fit Parameters= 883.467    , 191.026    ,
+Fitting-try= 13, Chi^2= 0.79807E+12, Chi^2/powr= 0.38410E-03; Fit Parameters= 883.480    , 191.026    ,
+Fitting-try= 13, Chi^2= 0.79807E+12, Chi^2/powr= 0.38410E-03; Fit Parameters= 883.467    , 191.029    ,
+Fitting-try= 14, Chi^2= 0.22091E+14, Chi^2/powr= 0.10632E-01; Fit Parameters= 936.964    , 191.026    ,
+Fitting-try= 15, Chi^2= 0.24145E+14, Chi^2/powr= 0.11621E-01; Fit Parameters= 829.969    , 191.026    ,
+Fitting-try= 16, Chi^2= 0.17857E+13, Chi^2/powr= 0.85944E-03; Fit Parameters= 883.467    , 202.593    ,
+Fitting-try= 17, Chi^2= 0.15674E+14, Chi^2/powr= 0.75437E-02; Fit Parameters= 936.964    , 202.593    ,
+Fitting-try= 18, Chi^2= 0.18100E+13, Chi^2/powr= 0.87114E-03; Fit Parameters= 883.467    , 179.458    ,
+ Hessian:
+   7798724492.6493130     
+  -5982878648.6522083        7472056208.9987898     
+  
+Relative function convergence.
+  
+ function     0.399034E+12   reldx        0.242804E-06
+ func. evals      13         grad. evals       6
+ preldf       0.108320E-08   npreldf      0.108320E-08
+  
+    5 extra function evaluations for covariance.
+ 
+     I      Final X(I)        D(I)          G(I)
+ 
+    1     0.883467E+03     0.894E+05    -0.245E+04
+    2     0.191026E+03     0.881E+05    -0.132E+04
+  
+Covariance = scale * inverse ( H )
+  
+ row  1    0.2707E+01
+ row  2    0.2168E+01  0.2825E+01
+Result, chi^2/ndf=    0.81435E+10
+# fie calls= 18 and # of iterations=  5
+ Best fit recalculation
+ EnergyCR, X_max, L_0, R_0:   162795236.71590137        883.46657065987711        191.02584365838132       0.27160000801086426     
+Fitting-try= -1, Chi^2= 0.79807E+12, Chi^2/powr= 0.38410E-03; Fit Parameters= 883.467    , 191.026    ,
+ chi^2/df=   1.9972263175962603E-002
+ ------- summary of all fit results for power-Kernel fit - x ------------------
+Fit# 1, qual=   1.957%, I_m=   0.1628E+09    0.000        0.000    , X_m=  883.5    0.0    0.0[g/cm^], R/lambda=   0.27, L/X_0= 179.46
+ ===================== end fitting for power-Kernel fit - x ===================
+ writing file "SKA/Crs-x-BeamPwr-PwrFit.dat"    20.000000000000000               99
+ shellin:nohup ./AfigSKAExC.sh  >AfigSKAExC.sh.log 2>&1  &                                                   
+ AfigSKAExC.sh  is submitted
