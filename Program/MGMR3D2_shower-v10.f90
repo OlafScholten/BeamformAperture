@@ -62,7 +62,7 @@
    !   Initialize Radial dependence of pancake thickness & normalisation
    Call PancakeInit(XDepAlpha, PenDepth, AtmHei_dim, ObsDist_dim, ObsDist_Step, lam_100, lam_tc)
    write(2,"('parametrization radial dependence of \lambda; @r=0:',F5.2,', @r=',f4.1,'m:',F5.2,', @r=',f6.1,'m:',F6.1)") &
-     lam_tc,CoreDist_A(1),PancakeThi(1),ObsDist_dim*ObsDist_Step, c*lam_tc
+     lam_tc,CoreDist_A(1),PancakeThi(1),ObsDist_dim*ObsDist_Step, lam_100*ObsDist_dim*ObsDist_Step/100.
    if(test) write(2,"('in ',I2,' steps of factor',f5.2,' in distance and',F5.2,' in lambda')") CoreDist_Dim,b,a
    !
    if(test) OPEN(UNIT=4,STATUS='unknown',FILE='plot/sh_lambda.dat')

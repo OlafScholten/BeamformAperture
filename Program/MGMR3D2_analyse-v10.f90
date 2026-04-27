@@ -14,7 +14,7 @@ contains
     implicit none
     logical, Intent(in) :: Ft ! determines if this is run while fitting or after matching to data
     character*80 :: line=''
-    character*5 :: comnd
+    character*5 :: comnd, pulse
     character*30 :: OFile=''
     real(dp) :: z=0.
     integer :: eof,i,nxx
@@ -43,14 +43,15 @@ contains
            if(done) exit
            cycle
        endif
-       read(line,*,iostat=nxx) comnd, z, OFile
-       if(nxx.ne.0) Ofile=''
-       write(*,*) 'command=',comnd,' args=',z, 'OutFilePrefix=',trim(OFile),'<'
+       line=trim(line)//' " " " "'
+       read(line,*,iostat=nxx) comnd, z, OFile, pulse
+       !if(nxx.ne.0) Ofile=''
+       write(*,*) 'command=',comnd,' args=',z, 'OutFilePrefix="',trim(OFile),'", pulse="',trim(pulse),'"'
        done=.true.
        if(trim(comnd).eq. 'grid') then
          call Observab_Grid(z, OFile)
        else if(trim(comnd).eq. 'theta') then
-         call Observab_theta(z, OFile)
+         call Observab_theta(z, OFile, pulse)
        else if(trim(comnd).eq. 'dist') then
          call Observab_dist(z, OFile)
        else
@@ -212,7 +213,7 @@ contains
     end
 !-------------------------------------------------------------------------
 !-------------------------------------------------------------------------
-    Subroutine Observab_theta(thetaD, OFile)   ! not unfolding antenna function
+    Subroutine Observab_theta(thetaD, OFile, pulse)   ! not unfolding antenna function
     use BigArrays, only : ObsDist_dim, ObsDist_step
     use BigArrays, only : CEx, CEy, CEr
     use BigArrays, only : Ex_nu_dwn,Ey_nu_dwn,Er_nu_dwn
@@ -226,16 +227,17 @@ contains
     implicit none
     real(dp), intent(in) :: thetaD
     character(len=30), intent(inout) :: OFile
+    character(len=5), intent(in) :: pulse
 !    complex(dp) :: E_nu_int1(i_nu_ini:i_nu_max),E_nu_int2(i_nu_ini:i_nu_max)
 !    complex(dp) :: Cx,Cy
     character*80 :: line
     integer :: i,idi
     real(dp) :: theta,Antd,StI,StQ,StU,StV
 !
-    if(trim(OFile).eq.'') OFile=TRIM(PlotBase)//'th_'
-      write(2,*) 'Calculate observables at azimuth=',thetaD,'degree'
+    if(trim(OFile).eq.'') OFile=TRIM(PlotBase)
+      write(2,*) 'Calculate observables at azimuth=',thetaD,'degree, ',trim(OFile)//'th'//trim(line)//'.csv'
       write(line,'(I3.3)') idint(thetaD)
-      OPEN(UNIT=4,STATUS='unknown',FILE=trim(OFile)//trim(line)//'.csv')
+      OPEN(UNIT=4,STATUS='unknown',FILE=trim(OFile)//'th'//trim(line)//'.csv')
       write(4,"('!  d[m]',9x,'theta',10x,'I',13x,'Q/I',13x,'U/I',13x,'V/I' )")
       theta=thetaD*pi/180.
       Do idi =1,ObsDist_dim
@@ -244,16 +246,18 @@ contains
         call FFTransform_B(CEy, tTrace_dim_dwn, Ey_nu_dwn(i_nu_ini,idi), nuTrace_dim_dwn,i_nu_ini,i_nu_max)
         call FFTransform_B(CEr, tTrace_dim_dwn, Er_nu_dwn(i_nu_ini,idi), nuTrace_dim_dwn,i_nu_ini,i_nu_max)
         !
-         write(line,'(I3.3,I2.2)') idint(thetaD),idi
-         OPEN(UNIT=9,STATUS='unknown',FILE=trim(OFile)//trim(line)//'.csv')
-         write(9,"('!  ',F7.2, I5,7(1pG13.4) )") Antd, tTrace_dim_dwn, &
-            SamplingTime_dwn, padding*tTrace_step, nu_min, nu_max &
-            , GroundLevel, Zen_sh, Azi_sh
-         Do i=1,tTrace_dim_dwn
-            Write(9,"(I5,3(1pG13.4))") i, Real(CEx(i)), Real(CEy(i)), Real(CEr(i))
-         EndDo ! i=1,tTrace_dim_dwn
-         Close(Unit=9)
-         !
+        If(pulse .eq. 'pulse' .and. idi.lt.100) Then
+            write(line,"(I3.3,'d',I2.2)") idint(thetaD),idi
+            OPEN(UNIT=9,STATUS='unknown',FILE=trim(OFile)//'th'//trim(line)//'.csv')
+            write(9,"('!  Pulse time trace @ angle & distance')")
+            write(9,"('!  ',F7.2, I5,7(1pG13.4) )") Antd, tTrace_dim_dwn, &
+               SamplingTime_dwn, padding*tTrace_step, nu_min, nu_max &
+               , GroundLevel, Zen_sh, Azi_sh
+            Do i=1,tTrace_dim_dwn
+               Write(9,"(I5,3(1pG13.4))") i, Real(CEx(i)), Real(CEy(i)), Real(CEr(i))
+            EndDo ! i=1,tTrace_dim_dwn
+            Close(Unit=9)
+        EndIf
         call GetStokes(Antd,theta,StI,StQ,StU,StV,PrntStks=.true.)
         write(4,"(f9.4,' , ',f9.3,4(' , 'E13.4))") Antd,theta*180/pi,StI,StQ/StI,StU/StI,StV/StI  ! ,S/StI ,sqrt(StQ*StQ+Stu*Stu+Stv*StV)
       enddo  ! idi loop over distances to the core

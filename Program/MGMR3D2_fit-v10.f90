@@ -9,8 +9,8 @@
     Include 'MGMR3D_FFT.f90'
     !Include 'C:\Users\Olaf Scholten\Documents\AstroPhys\Lightning\Imaging\LMA\LMA2019\Program/AntFuncCnst.f90' !Take this out when using the LINUX makefile
     !Include 'C:\Users\Olaf Scholten\Documents\AstroPhys\Lightning\Imaging\LMA\LMA2019\Program/AntFunct.f90' !Take this out when using the LINUX makefile
-    Include '../../LOFLI/FORTRANsrc/AntFuncCnst.f90' !Take this out when using the LINUX makefile
-    Include '../../LOFLI/FORTRANsrc/AntFunct.f90' !Take this out when using the LINUX makefile
+    Include '/Users/users/scholten/LOFLI/FORTRANsrc/AntFuncCnst.f90' !Take this out when using the LINUX makefile
+    Include '/Users/users/scholten/LOFLI/FORTRANsrc/AntFunct.f90' !Take this out when using the LINUX makefile
     Include 'MGMR3D2_analyse-v10.f90'
     Include 'MakeGLEplots.f90'
     Include 'MGMR3D2-v10.f90'
@@ -22,7 +22,7 @@
     Include 'MGMR3D_Fit_RadioFoot-v4.f90'
     Include 'MGMR3D2_shower-v10.f90'
     !Include 'C:\Users\Olaf Scholten\Documents\AstroPhys\Lightning\Imaging\LMA\LMA2019\Program/nl2sol.f90' !Take this out when using the LINUX makefile
-    Include '../../LOFLI/FORTRANsrc/nl2sol.f90' !Take this out when using the LINUX makefile
+    Include '/Users/users/scholten/LOFLI/FORTRANsrc/nl2sol.f90' !Take this out when using the LINUX makefile
 !------------------------------
 	program MGMR3D2_fit
 ! subversion sept 18 concerns the following bugs:
@@ -46,6 +46,7 @@
     use BigArrays, only : ObsDist_dim, ObsDist_Step
     use CrossProd,only : calc_alpha_vB
     use T_Analyze, only : Analyze  ! subroutine
+    use CPU_timeUsage, only : CPU_usage
     Use Systemcommands, only : MakeGLEplots
 	 implicit none
     INTEGER DATE_T(8),i,WLength
@@ -83,6 +84,7 @@
     Fitting=.true.
     call SetParams
     ReadInput=.false.
+    Call CPU_usage('starting')
     !
     If(step .or. stpv) then
         WLength=N_step_max
@@ -318,7 +320,7 @@
     goto 8
     !
 9   Fitting=.false.
-    write(2,*) 'Input-data file could not be found!'
+    write(2,*) 'No fitting of data, maybe because input-data file could not be found!'
     call calc_alpha_vB !(vBE,vBN,vBU,vvBE,vvBN,vvBU)
     call MGMR3D
     !Call  Analyze(Fitting) does not work as all intermediate results are cleaned after leaving MGMR
