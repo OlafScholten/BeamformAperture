@@ -11,6 +11,7 @@
     use RFootPars, only : RnrmA, RnrmB, FShift_x,FShift_y, test, SelectFh, Intensity_Weight, vDrift2, F_lim
     use RFootPars, only : nu_min, nu_max, padding, SamplingTime_dwn, StParRange
     use RFootPars, only : GroundLevel, Zen_sh, Azi_sh, Zen_B, Azi_B, Fit_StI
+    use RFootPars, only : NF_max
     use Atmosphere, only : IndRefOrho, TopAtmExpon, AtmHei_step, AtmHei_dim
     use BigArrays, only : ObsDist_dim, ObsDist_Step, LamInt_dim
     use BigArrays, only : nuTrace_step, nuTrace_dim, tTrace_step, tTrace_dim_b, tTrace_dim_o, tTrace_Offset
@@ -35,7 +36,8 @@
         SelectFh, lam_tc ,lam_100, XDepAlpha, IntegrateCurrent, PancakeIncField,  &
         ObsDist_dim, ObsDist_Step,  tTrace_step, lamx, u0, a_ChX, J0Q, padding, D_ESmooth, AlternativeSmooth, u0, &
         F_lim, nu_min,nu_max, SamplingTime, StParRange, Voltages, rh0,MoliereRadius, J0t, GroundLevel, X_0, X_max, &
-        RnrmA, RnrmB, Zen_sh, Azi_sh, Zen_B, Azi_B, Intensity_Weight, NoisePower, Energy_sh, RL_param, R_0,L_0, Fit_StI
+        RnrmA, RnrmB, Zen_sh, Azi_sh, Zen_B, Azi_B, Intensity_Weight, NoisePower, Energy_sh, RL_param, R_0,L_0, Fit_StI, &
+        NF_max
     !
     Test=.false.
     !AtmHei_dim=2000 ; AtmHei_step=10.d0 ! [m]
