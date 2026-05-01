@@ -286,6 +286,10 @@ subroutine Get_ObsPlsDelay(idi)
             Norma = Norma + Ex_to(k+j,idi-1)*Ex_to(k+j,idi-1) + Ey_to(k+j,idi-1)*Ey_to(k+j,idi-1)
             Normb = Normb + Ex_to(k+j+i,idi)*Ex_to(k+j+i,idi) + Ey_to(k+j+i,idi)*Ey_to(k+j+i,idi)
         enddo
+        If(Norma*Normb.eq.0.) Then
+         Norma=1.
+         Normb=1.
+        EndIF
         Overlap(i)=Overlap(i)/sqrt(Norma*Normb)
     enddo
     m = maxloc(Overlap)
@@ -336,7 +340,7 @@ subroutine GetZet_Lam(zet,lam,branch)
     integer, intent(in) :: branch  ! should be +1 or -1
     real*8 :: dd,NN,di  ! ,dr
     real*8, parameter :: Converg=1.e-6
-    integer, parameter :: MaxIter=4
+    integer, parameter :: MaxIter=10 ! 4
     integer :: i,k, brnch
     common / time / zeta_c,hcto_c
       real*8 :: zeta_c,hcto_c
@@ -392,11 +396,11 @@ subroutine GetZet_Lam(zet,lam,branch)
       lamx=hcto_c - hxto
       DD=lam -lamx
       If(ABS(dd).gt. 1.e-6) Then  ! refine using derivative
-         !write(2,*) 'GetZet_Lam: lam=', lam,'zeta=', zet, zetx, DD, '=lam-lamx'
+         !write(2,*) '!GetZet_Lam: lam=', lam,'zeta=', zet, zetx, DD, '=lam-lamx'
          dr=   di*dxi(i+1)+(1.-di)*dxi(i)  ! change in refractivity
          dsqldz=-(NN*R-zetx)*(R-NN*zetx - dr*R*R)/(2.*R*hxto*sqrt(lamx))  ! d\sqrt(h_c-h)/d\zeta
          zet=zetx + (sqrt(lamx)-sqrt(lam))/dsqldz   ! refine using derivative in sqrt(lam)
-         !write(2,*) sqrt(lamx), sqrt(lam), dsqldz, (sqrt(lamx)-sqrt(lam))/dsqldz, zetx, zeta_c
+         !write(2,*) '!',sqrt(lamx), sqrt(lam), dsqldz, (sqrt(lamx)-sqrt(lam))/dsqldz, zetx, zeta_c
          i=zet/AtmHei_step
          if(i.lt.(AtmHei_dim-1) .and. i.gt.1) then
             di=zet/AtmHei_step-i
@@ -404,7 +408,7 @@ subroutine GetZet_Lam(zet,lam,branch)
             R=sqrt(zet*zet+ObsDist*ObsDist)
             lamx=hcto_c - (zet- NN*R)
             If(ABS(lam -lamx).gt. abs(DD)) Then
-               !write(2,*) 'GetZet_Lam, itr:lam,x,diff=',lam, lamx, lam -lamx, 'old:',DD &
+               !write(2,*) '!GetZet_Lam, itr:lam,x,diff=',lam, lamx, lam -lamx, 'old:',DD &
                !   ,'; zeta,x,c=', zet, zetx, zeta_c,  dsqldz, (AtmHei_dim-1.)*AtmHei_step
                Zet=zetx ! new value worse, do not accept derivative change
             EndIf
@@ -578,7 +582,7 @@ Subroutine RayFields_t_obs(idi,CD_i)
 ! idi (=ObsDist) determines the distance to the pencil shower
 ! CD_i (CoreDist_A(CD_i)) determines the position of this pencil shower w.r.t. the core of the real shower
     use BigArrays, only : Ex_tb,AxD_tb,Ey_tb,AyD_tb,Ar_tb, Erh_tb, t_tb, t_ch
-    use BigArrays, only : Ix,Iy,IQ, Ix_int,Iy_Int, ObsDist !, ObsDist_dim, ObsDist_Step
+    use BigArrays, only : Ix,Iy,IQ, Ix_int,Iy_Int, ObsDist , ObsDist_dim, ObsDist_Step
     use RFootPars, only : NTo
     use Atmosphere, only : xi,dxi, AtmHei_dim, AtmHei_step
    use Pancakefunction, only : CoreDist_Dim, CoreDist_A, alpha_tr, PancakeThi
@@ -592,13 +596,23 @@ Subroutine RayFields_t_obs(idi,CD_i)
     real(dp) :: h_c,h,zeta,di,R,NN,dr,calD,Jx,Jx_int,Jy,Jy_int,dJx,dJy,JQ, nt_r
     real(dp) :: Intx,Inty,Intr,B,Lbd,weigh ! ,dh,max_h,fh_ce
     real(dp) :: fh,dfh,dfhl,dfha,alpha,lam, dlambda_hdr, dfhdr, Int_dh
-    integer :: i, i_z, iz1, iz2, branch, i_t
+    integer :: i, i_z, iz1, iz2, branch, i_t, iz_hi, iz_low
     real(dp) :: hto, zet1, zet2, dhdz, dz
     !integer, save :: il_start = 1, CD_i_prev=-1
     common / time / zeta_c,hcto_c
     real(dp) :: zeta_c,hcto_c,lambda
     logical :: subtr
 !
+!   write(2,*) 'RayFields_t_obs; idi:',idi, ObsDist, CD_i, CoreDist_A(CD_i), zeta_c
+!      If((idi.ne.13) .or. (cd_i.ne.5)) Then
+!         Ex_tb(:,idi,CD_i) =0
+!         AxD_tb(:,idi,CD_i)=0
+!         Ey_tb(:,idi,CD_i) =0
+!         AyD_tb(:,idi,CD_i)=0
+!         Ar_tb(:,idi,CD_i) =0
+!         Erh_tb(:,idi,CD_i)=0
+!         return
+!      EndIf
    DO i_t=2,NTo
       T_o=t_ch(idi)+t_tb(i_t)
       h_c=hcto_c+T_o
@@ -612,45 +626,78 @@ Subroutine RayFields_t_obs(idi,CD_i)
         dlambda_hdr=(PancakeThi(CD_i+1)-PancakeThi(CD_i-1))/(CoreDist_A(CD_i+1)-CoreDist_A(CD_i-1))
       endif
       !
-      !write(2,*) 'RayFields_t_obs: i_t=', i_t
+      !write(2,*) 'RayFields_t_obs; i_t:',idi,i_t,AtmHei_step,AtmHei_dim, zeta_c
       !flush(unit=2)
-      lam=hcto_c + T_o  !  corresponds to h=0
+      lam=hcto_c + T_o  !  corresponds to h=0 since (-t+h)= hcto_c - lam
       branch=-1
       zet1=zeta_c
       call GetZet_Lam(zet1,lam,branch)
-      !If(zet1.lt.0.) zet1=0.
+      If(zet1.lt.0.) zet1=0.
+      If(zet1.gt.AtmHei_step*AtmHei_dim) Then
+         Ex_tb(:,idi,CD_i) =0
+         AxD_tb(:,idi,CD_i)=0
+         Ey_tb(:,idi,CD_i) =0
+         AyD_tb(:,idi,CD_i)=0
+         Ar_tb(:,idi,CD_i) =0
+         Erh_tb(:,idi,CD_i)=0
+         !write(2,*) 'RayFields_t_obs; zet1 too large:',idi,i_t,cd_i, zet1
+         cycle
+      EndIf
+      ! check
+         i=(zet1/AtmHei_step)
+         di=zet1/AtmHei_step-i
+         NN=1.+ di*xi(i+1) + (1.-di)*xi(i)
+         R=sqrt(ObsDist*ObsDist +zet1*zet1)
+         h= zet1-NN*R + T_o
+         !write (2,*) '!h-check',h,lam, hcto_c + T_o-lam
+      !end check
+      !
       branch=+1
       zet2=zeta_c
       call GetZet_Lam(zet2,lam,branch)
-      !if(zet2.gt. AtmHei_step*AtmHei_dim) zet2=AtmHei_step*AtmHei_dim
-
-
+      if(zet2.gt. (AtmHei_step-1)*AtmHei_dim) zet2=(AtmHei_step-1)*AtmHei_dim
+      !
       Intx=0. ;   Inty=0. ; Intr=0. ; B=0.
       dz=2.*AtmHei_step     ! will be halved later
-      !dz=AtmHei_step     ! results in no observable difference
+      !dz=AtmHei_step/2.     ! results in no observable difference
       i_z=(zet2-zet1)/dz
       If(i_z.lt.10) i_z=10   ! minimum number of integration steps
       dz=(zet2-zet1)/(2.*i_z)   ! should minimize effects of missing (over estimating) integral due to contributions at the end tips
-      iz1=MAX( (zet1-zeta_c)/dz-50, -zeta_c/dz-0.5 )
-      iz2=MIN( (zet2-zeta_c)/dz+50, (AtmHei_step*AtmHei_dim-zeta_c)/dz+0.5 )
+      iz1=0
+      iz2=(zet2-zet1)/dz
+      ! test for (h.gt.10.*lambda) limit at lower heights
+      iz_low=iz1
+      iz_hi=iz2
+      Do i_z=iz1, iz2
+         zeta=zet1+(i_z+0.5)*dz
+         i=(zeta/AtmHei_step)
+         di=zeta/AtmHei_step-i
+         NN=1.+ di*xi(i+1) + (1.-di)*xi(i)
+         R=sqrt(ObsDist*ObsDist +zeta*zeta)
+         h= zeta-NN*R + T_o
+         If(h.lt.0.) iz_low=i_z
+         If(h.gt.5.*lambda) Then
+            iz_hi=i_z
+            exit
+         EndIf
+      endDo
+      If(((iz_hi-iz_low) .gt. 0) .and. ((iz_hi-iz_low) .lt. 10)) then ! do not change stepping size when h ordering is strange or stepsize ik okay
+         dz=dz*(iz_hi-iz_low)/10.
+         iz1=0
+         iz2=(zet2-zet1)/dz
+         !write(2,*) '!RayFields_t_obs; dzchange',iz_low,iz_hi, iz1,iz2
+      EndIf
       !iz1=(zet1-zeta_c)/dz-150
       !iz2=(zet2-zeta_c)/dz+150 ! no observable difference
-      !write(2,*) 'CurrField_zeta:',iz1,iz2, zet1, zet2, zeta_c, dz
+      !write(2,*) '!RayFields_t_obs; zeta:',i_t, zeta_c +(iz1+0.5)*dz, zeta_c +(iz2+0.5)*dz, zet1, zet2, dz
       !flush(unit=2)
       !If(cd_i.le.2 .and. idi.lt.3 .and. i_t.lt.10) write(2,*) 'RayFields_t_obs: i_t=', i_t, t_tb(i_t), &
       !      iz1*dz+zeta_c, iz2*dz+zeta_c, idi, cd_i
       !flush(unit=2)
       Do i_z=iz1, iz2
-         zeta=zeta_c +(i_z+0.5)*dz
+         zeta=zet1+(i_z+0.5)*dz
          i=(zeta/AtmHei_step)
          di=zeta/AtmHei_step-i
-!If(zeta.lt.6000) cycle !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!If(zeta.gt.6500) cycle !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         If(i.lt.1) Then
-            cycle
-         Else If(i.ge.AtmHei_dim) then
-            cycle
-         endif
          R=sqrt(ObsDist*ObsDist +zeta*zeta)
          NN=1.+ di*xi(i+1) + (1.-di)*xi(i)
          dr=   di*dxi(i+1) + (1.-di)*dxi(i)
@@ -688,6 +735,7 @@ Subroutine RayFields_t_obs(idi,CD_i)
          !    fh=0. ! Just for checking the effects of this term, effect of this is invusible.
          ! Need to check the sign in the second (small) term, d/dh!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
          Ex =Ex  + weigh * (dfh*Jx -fh *dJx) ! (dfh*Jx/cald - fh *dJx/cald)
+         !write(2,*) '!',h,i_z-iz1, zeta-zet1,zet2-zeta,i_t,Ex
          AxD=AxD + weigh*Jx_int*fh   ! proportional to integrated current, thus like the moving dipole
          Ey =Ey  + (dfh*Jy - fh *dJy) * weigh
          AyD=AyD + weigh*Jy_int*fh

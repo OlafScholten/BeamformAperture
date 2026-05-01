@@ -7,8 +7,10 @@ module T_Analyze
 contains
 !---------------------------------------------------------
     Subroutine Analyze(Ft)
+!    use BigArrays, only : Ex_nui,Ey_nui,Er_nui,filt,test
+!    use BigArrays, only : Ex_to,Ey_to,Er_to
+!    use BigArrays, only : i_nu_ini,i_nu_max, ObsDist_dim, tTrace_dim_o,tTrace_step,padding
     use eventdata, only : N_ant
-    use BigArrays, only : Ex_nu_dwn
     use RFootPars, only : N_FitPar
     use FFT, only : FFTransform_su,DAssignFFT
     implicit none
@@ -45,6 +47,8 @@ contains
        endif
        line=trim(line)//' " " " "'
        read(line,*,iostat=nxx) comnd, z, OFile, pulse
+!      !write(*,*) 'line:', line
+       !write(*,*) 'nxx=',nxx,comnd, z, OFile
        !if(nxx.ne.0) Ofile=''
        write(*,*) 'command=',comnd,' args=',z, 'OutFilePrefix="',trim(OFile),'", pulse="',trim(pulse),'"'
        done=.true.
@@ -75,7 +79,6 @@ contains
     use constants, only : c_l
     use RFootPars, only : nu_min, nu_max, padding, test
     use FFT, only : FFTransform_su,DAssignFFT, DownSamlple
-    use eventdata, only : PlotBase
     implicit none
 !    character*80 line
 !    real(dp) :: z
@@ -89,7 +92,7 @@ contains
         SamplingTime_dwn=tTrace_step
         write(2,*) 'SamplingTime_dwn set equal to tTrace_step=',tTrace_step
     endif
-    tTrace_dim_dwn=FF_dim*tTrace_step/SamplingTime_dwn ! -1
+    tTrace_dim_dwn=FF_dim*tTrace_step/SamplingTime_dwn -1
     nuTrace_dim_dwn=tTrace_dim_dwn/2  ; tTrace_dim_dwn=2*nuTrace_dim_dwn
     nuTrace_step_dwn=c_l/(tTrace_dim_dwn*SamplingTime_dwn)   ; maxnu_dwn=c_l/(2.*SamplingTime_dwn) ! in [GHz]
     tTrace_Offset_dwn=padding*tTrace_step
@@ -99,7 +102,7 @@ contains
         ', stepsize=',F5.3,'[ns], total length of calculated signal=',F6.1,'[ns]'/&
         'Down-sampling to',F5.3,'[ns], Frequency range upto ',F5.1,'[GHz], in steps of ',f5.1,'[MHz]')
     i_nu_ini= nu_min/(1000.*nuTrace_step_dwn)  ; i_nu_max=nu_max/(1000.*nuTrace_step_dwn)
-    if(i_nu_ini .lt. 0) i_nu_ini=0
+    if(i_nu_ini .le. 0) i_nu_ini=1
     if(i_nu_max .ge. nuTrace_dim_dwn) i_nu_max=nuTrace_dim_dwn
     if(first) write(2,204) i_nu_ini*nuTrace_step_dwn*1000.,i_nu_max*nuTrace_step_dwn*1000.
 204 format('Frequency filter from ',F5.1,'[MHz] till ',F6.0,'[MHz]')
@@ -117,7 +120,6 @@ contains
     do i = i_nu_ini, i_nu_max
       filt(i)=1.
     end do
-    !flush(unit=2)
     Do idi =1,ObsDist_dim
         Call DownSamlple(Ex_to(1,idi), E,padding,tTrace_dim_o, FF_dim, filt, Ex_nu_dwn(i_nu_ini,idi), i_nu_ini,i_nu_max)
         Call DownSamlple(Ey_to(1,idi), E,padding,tTrace_dim_o, FF_dim, filt, Ey_nu_dwn(i_nu_ini,idi), i_nu_ini,i_nu_max)
@@ -136,7 +138,6 @@ contains
    use BigArrays, only : CEx,CEy,CEr, Ex_nu, Ey_nu, Er_nu
    use RFootPars, only : test
    use RFootPars, only : X_max, Zen_sh
-   use eventdata, only : PlotBase
    use constants, only : c_l  ! ,ci
    implicit none
    character(len=30), intent(inout) :: OFile
@@ -148,7 +149,7 @@ contains
    real(dp) :: ddd,t_o,theta,StI,StQ,StU,StV
    real(dp) :: dphi, dph_y, th_y, t0_y, dph_r, th_r, t0_r, th0_r, dth_r, th0_x, dth_x
    !
-   if(trim(OFile).eq.'') OFile=TRIM(PlotBase)//'dist_'
+   if(trim(OFile).eq.'') OFile='plot/dist_'
    call Intpl_Enu(Antd,idi)  ! Generates the E-field time traces, not unfolding antenna function
    if(idi.ge. ObsDist_dim) return
    write(line,'(I3.3)') idint(Antd)
@@ -163,6 +164,7 @@ contains
    enddo
    close(unit=4)
    OPEN(UNIT=4,STATUS='unknown',FILE=trim(OFile)//'nu-'//trim(line)//'.csv')
+   write(2,*) 'file written: "', trim(OFile)//'nu-'//trim(line)//'.csv', '"'
    !idi=IDINT(Antd/ObsDist_Step)
    !if(idi.lt.1) idi=1
    !ddd=Antd/ObsDist_Step-idi
@@ -198,7 +200,7 @@ contains
        If((th_r-th0_r) .gt. 1.5) dth_r=dth_r+2.d0
        If((th_r-th0_r) .lt. -1.5) dth_r=dth_r-2.d0
        th0_r=th_r
-       write(4,"(f9.6,3(' , 'E13.4),3F10.2)") nu, &
+       write(4,"(f9.6,3(' , 'E13.4),3F8.2)") nu, &
          abs(ex_nu(i))/nuTrace_step_dwn,abs(ey_nu(i))/nuTrace_step_dwn,abs(Er_nu(i))/nuTrace_step_dwn &
             ,theta-dth_x, th_y, th_r-dth_r
    enddo
@@ -217,11 +219,6 @@ contains
     use BigArrays, only : ObsDist_dim, ObsDist_step
     use BigArrays, only : CEx, CEy, CEr
     use BigArrays, only : Ex_nu_dwn,Ey_nu_dwn,Er_nu_dwn
-    use BigArrays, only : tTrace_step  ! for t-offset
-    use RFootPars, only : padding  ! for t-offset
-   use eventdata, only : PlotBase
-    use RFootPars, only : GroundLevel, Zen_sh, Azi_sh
-    use RFootPars, only : nu_min, nu_max
     use constants, only : dp, pi !,ci
       use FFT, only : FFTransform_B
     implicit none
@@ -234,10 +231,11 @@ contains
     integer :: i,idi
     real(dp) :: theta,Antd,StI,StQ,StU,StV
 !
-    if(trim(OFile).eq.'') OFile=TRIM(PlotBase)
-      write(2,*) 'Calculate observables at azimuth=',thetaD,'degree, ',trim(OFile)//'th'//trim(line)//'.csv'
+    if(trim(OFile).eq.'') OFile='plot/'
+      write(2,*) 'Calculate observables at theta=',thetaD,'degree'
       write(line,'(I3.3)') idint(thetaD)
       OPEN(UNIT=4,STATUS='unknown',FILE=trim(OFile)//'th'//trim(line)//'.csv')
+      write(2,*) 'file written: "',trim(OFile)//trim(line)//'.csv','"'
       write(4,"('!  d[m]',9x,'theta',10x,'I',13x,'Q/I',13x,'U/I',13x,'V/I' )")
       theta=thetaD*pi/180.
       Do idi =1,ObsDist_dim
@@ -251,13 +249,14 @@ contains
             OPEN(UNIT=9,STATUS='unknown',FILE=trim(OFile)//'th'//trim(line)//'.csv')
             write(9,"('!  Pulse time trace @ angle & distance')")
             write(9,"('!  ',F7.2, I5,7(1pG13.4) )") Antd, tTrace_dim_dwn, &
-               SamplingTime_dwn, padding*tTrace_step, nu_min, nu_max &
-               , GroundLevel, Zen_sh, Azi_sh
+               SamplingTime_dwn ! , padding*tTrace_step, nu_min, nu_max &
+               !, GroundLevel, Zen_sh, Azi_sh
             Do i=1,tTrace_dim_dwn
                Write(9,"(I5,3(1pG13.4))") i, Real(CEx(i)), Real(CEy(i)), Real(CEr(i))
             EndDo ! i=1,tTrace_dim_dwn
             Close(Unit=9)
         EndIf
+        !
         call GetStokes(Antd,theta,StI,StQ,StU,StV,PrntStks=.true.)
         write(4,"(f9.4,' , ',f9.3,4(' , 'E13.4))") Antd,theta*180/pi,StI,StQ/StI,StU/StI,StV/StI  ! ,S/StI ,sqrt(StQ*StQ+Stu*Stu+Stv*StV)
       enddo  ! idi loop over distances to the core
@@ -283,7 +282,6 @@ contains
     real*8 :: theta, ddd  !d_grid,
     integer :: i_grid, iant, Nth, ith  ! N_grid,
     character*8 :: Fname
-    Character(len=50) :: PrntFile
     integer :: i,idi
     real(dp) :: Antd,StI,StQ,StU,StV,p_ang
     logical :: polar
@@ -313,9 +311,7 @@ contains
           if(idi.ge. ObsDist_dim) cycle
           Do ith =1,Nth
             theta=2.*pi*ith/Nth
-            write(PrntFile,"(A,A,i3.3,'-',i3.3)") TRIM(FileGrid),'ttrace-',nint(Antd),nint(2.*180*ith/Nth)
-        !write(2,*) dist,nint(tx*180/pi),', file=',trim(PrntFile)//'ttrace-'//trim(Fname)//'.csv'
-            call GetStokes(Antd,theta,StI,StQ,StU,StV,PrntFile)
+            call GetStokes(Antd,theta,StI,StQ,StU,StV,PrntFile=FileGrid)
             !write(4,*) Antd,' , ',theta*180./pi,' , ',StI!sum(abs(CEx)*abs(CEx))+sum(abs(CEy)*abs(CEy))
             write(4,"(f9.4,' , ',f9.3,4(' , 'E13.4))") Antd,theta*180./pi,StI,StQ,StU,StV
          enddo
@@ -361,7 +357,7 @@ contains
                StQ=StQ/StI
                StU=StU/StI
                StV=StV/StI
-               p_ang=atan2(stQ,StU)/pi  ! twice the polarization angle
+               p_ang=atan2(stQ,StU)/(pi)  ! twice the polarization angle
                StI=StI/ProjectFact
             EndIf
             !write(4,*) x_grid,' , ',y_grid,' , ',StI!sum(abs(CEx)*abs(CEx))+sum(abs(CEy)*abs(CEy))
@@ -406,42 +402,36 @@ contains
     use eventdata, only : St_I, St_Q, St_U, St_V, sigma_I, sigma_Q, sigma_U, sigma_V  ! just for printing
     use eventdata, only : Energy_sh
     use eventdata, only : N_scnt, x_scnt, y_scnt, S_scnt
-    use BigArrays, only : ObsDist_dim, ObsDist_step
-    use Atmosphere, only : PenDepth
+    use BigArrays, only : ObsDist_dim, ObsDist_step, PenDepth
     use BigArrays, only : CEx,CEy,CEr, Ex_nu, Ey_nu, Er_nu
     use RFootPars, only : FShift_x,FShift_y, D_IMax, StParRange
     use RFootPars, only : X_0,lamx,X_max
     use RFootPars, only : N_FitPar
     use RFootPars, only : GroundLevel, Zen_sh, Azi_sh, Zen_B, Azi_B
-    use RFootPars, only : nu_min, nu_max
-    use eventdata, only : PlotBase, FileFitResult    ! 'plot/FitResult'
+    use eventdata, only : FileFitResult    ! 'plot/FitResult'
     use RFootPars, only : R_0,L_0, RL_param
     use eventdata, only : Voltages, Core_N, Core_E, Ant_N, Ant_E
     use eventdata, only : Eoff,Noff,vBE,vBN,vBU,vvBE,vvBN,vvBU, vBxvvB, RelMx_N, RelMx_E, RelMx_U
-   use LateralDistribution, only : W_tc
     ! use CrossProd,only : calc_alpha_vB
     !  use FFT, only : FFTransform_B
     implicit none
     character(len=40) :: OFile=''
-    character(len=50)  :: PrntFile
     complex(dp) :: Cx,Cy
-    real(dp) :: NPart, X_rh
-    integer :: i,idi,i_ant,Sample_Peak,m(1), i_min
+    real(dp) :: NPart, X_rh, W_tc
+    integer :: i,idi,i_ant,Sample_Peak,m(1)
     real(dp) :: theta,dist,ant_x,ant_y, T_pulse, Pow(1:tTrace_dim_dwn), Ant_North, Ant_East
     Real(dp) :: ProjectFact, RelAnt_N, RelAnt_E, HorDis_AntMx, ZenAng, AziAng, Ang_Ux
+   !Real(dp) :: BE, BN, BU, SN, SE, SU
+   !Real(dp) :: rad, sZS, sZB, c, sVB
+    external W_tc
     !
     if(N_FitPar.le.0) then
-        If(FileFitResult .ne. TRIM(PlotBase)//'FitResult') then  ! file name has been set explicitly in "MGMR3D2_fit"
-            Ofile=TRIM(PlotBase)//FileFitResult
-            OPEN(UNIT=4,STATUS='unknown',FILE=TRIM(Ofile)//'.dat')
-            write(2,*) 'writing file "',TRIM(Ofile)//'.dat','"'
+        If(FileFitResult .ne. 'plot/FitResult') then
+            Ofile=FileFitResult
+            !write(2,*) 'Ofile=',Ofile, N_FitPar
         endif
     endif
     if(first) write(2,"('window size of ',I3,' used for calculating observables')") StParRange
-    if(first) write(2,"('Correct for antenna function? ',L8,' !!!')") Voltages
-    write(4,"(2I5,7(1pG13.5), I5 )") N_ant, StParRange, GroundLevel, Zen_sh, Azi_sh, Core_N, Core_E&
-      , nu_min, nu_max, tTrace_dim_dwn
-    !write(2,"(2I5,5(1pG13.5), I5 )") N_ant, StParRange, GroundLevel, Zen_sh, Azi_sh, Core_N, Core_E, tTrace_dim_dwn
     Do i_ant=1,N_ant
       If(Voltages) Then ! Unfold antenna function, only when real antennas are specified
          Ant_North=Ant_N(i_ant)
@@ -450,10 +440,9 @@ contains
          Ant_North=distance_antenna(i_ant)*sin(phi_antenna(i_ant))
          Ant_East=distance_antenna(i_ant)*cos(phi_antenna(i_ant))
       EndIf
-      Call ObservablesPrep(Ant_North, Ant_East, dist, theta, ProjectFact, T_pulse) !
+      Call ObservablesPrep(Ant_North, Ant_East, dist, theta, ProjectFact, T_pulse)
       If(ProjectFact.gt.0.) then !within calculational grid
-         write(PrntFile,"(A,'ttrace-',I4.4)") TRIM(Ofile),i_ant
-         If(StParRange .gt.0) then  ! limited range for calculation of Stokes parameters
+         If(StParRange .gt.0) then
             DO i=1,tTrace_dim_dwn
                 Cx=CEx(i) + cos(theta)*CEr(i)
                 Cy=CEy(i) + sin(theta)*CEr(i)
@@ -461,15 +450,9 @@ contains
             enddo
             m = maxloc(Pow)
             Sample_Peak=m(1)
-            i_min=MAX(Sample_Peak-StParRange/2,1)
-            write(4,"(1x,3A, 2x, 2F10.2, 2I5, 2(1pG13.5) )") '"',TRIM(PrntFile),'"', Ant_North, Ant_East, &
-               i_min, MIN(i_min+StParRange-1,tTrace_dim_dwn), SamplingTime_dwn, tTrace_Offset_dwn ! t=(i*SamplingTime_dwn-tTrace_Offset_dwn)/c
-            call GetStokes(dist,theta,StI_a(i_ant),StQ_a(i_ant),StU_a(i_ant),StV_a(i_ant),PrntFile,SP=Sample_Peak)
+            call GetStokes(dist,theta,StI_a(i_ant),StQ_a(i_ant),StU_a(i_ant),StV_a(i_ant),PrntFile=OFile,SP=Sample_Peak)
          else
-            i_min=1
-            write(4,"(1x,A, 2x, 2F10.2, 2I5, 2(1pG13.5) )") TRIM(PrntFile), Ant_North, Ant_East, &
-               i_min, tTrace_dim_dwn, SamplingTime_dwn, tTrace_Offset_dwn ! t=(i*SamplingTime_dwn-tTrace_Offset_dwn)/c
-            call GetStokes(dist,theta,StI_a(i_ant),StQ_a(i_ant),StU_a(i_ant),StV_a(i_ant),PrntFile)
+            call GetStokes(dist,theta,StI_a(i_ant),StQ_a(i_ant),StU_a(i_ant),StV_a(i_ant),PrntFile=OFile)
          endif
          StI_a(i_ant)=StI_a(i_ant)/ProjectFact
          StQ_a(i_ant)=StQ_a(i_ant)/ProjectFact
@@ -489,13 +472,8 @@ contains
            i_ant,dist,theta*180/pi
       EndIf!(ProjectFact.gt.0.)
       !
-      !write(4,"(2F8.4, I4, 2(1pG14.5))") Ant_North, Ant_East, i_ant, Sample_Peak, T_pulse
-      !write(4,"(100(1pG14.5))") ( Real(CEx(i) + cos(theta)*CEr(i)),i=1,Ntt )
-      !write(4,"(100(1pG14.5))") ( Real(CEy(i) + sin(theta)*CEr(i)),i=1,Ntt )
-      !
       !if(i_ant.eq.98)
-    enddo
-    Close(Unit=4)
+   enddo
     If(N_scnt .le. 0) return
     X_rh=PenDepth(0)
     write(2,*) 'Energy=',Energy_sh
@@ -584,11 +562,11 @@ contains
     real(dp), intent(in) :: dist,theta
     !complex(dp), intent(in) :: CEx(1:tTrace_dim_dwn),CEy(1:tTrace_dim_dwn),CEr(1tTrace_dim_dwn)
     real(dp), intent(out) :: StI,StQ,StU,StV
-    Character(len=*),optional, intent(in) :: PrntFile
+    Character(len=30),optional, intent(in) :: PrntFile
     integer,optional, intent(in) :: SP
     logical,optional, intent(in) :: PrntStks
     complex(dp) :: Cx,Cy
-    real(dp) :: omega,Px,Py,tx,ty,TPx,TPy,dt,c, norm=1.d0
+    real(dp) :: omega,Px,Py,tx,ty,TPx,TPy,dt,c,norm=17000.d0
     integer :: i,Unt, i_min, i_max
     logical :: Prnt
     character(len=7) :: Fname
@@ -597,7 +575,7 @@ contains
     if(present(SP))then
         i_min=SP-StParRange/2
         if(i_min.lt.1) then
-            write(2,*) 'peak too close to begin of trace for Stokes evaluation',i_min
+            write(2,*) 'peak to close to begin of trace for Stokes evaluation',i_min
             i_min=1
         endif
         i_max=i_min+StParRange-1
@@ -620,9 +598,9 @@ contains
         !write(2,*) 'PrntUnt=',PrntUnt
         tx=theta
         if(theta.lt.0.0) tx=theta+2.d0*pi
-        !write(Fname,"(i3.3,'-',i3.3)") nint(dist),nint(tx*180/pi) !  //'ttrace-'//trim(Fname)
-        write(2,*) 'get Stokes:',dist,nint(tx*180/pi),', file=',trim(PrntFile)//'.csv'
-        OPEN(unit=Unt,STATUS='unknown', FILE=trim(PrntFile)//'.csv')
+        write(Fname,"(i3.3,'-',i3.3)") nint(dist),nint(tx*180/pi)
+        !write(2,*) dist,nint(tx*180/pi),', file=',trim(PrntFile)//'ttrace-'//trim(Fname)//'.csv'
+        OPEN(unit=Unt,STATUS='unknown', FILE=trim(PrntFile)//'ttrace-'//trim(Fname)//'.csv')
         write(Unt,"('!',2x,'t[mus]',7x,'Re(E_x)',9x,'Im(E_x)',9x,'Re(E_y)',9x,'Im(E_y)')")
     endif
      !   get Stokes
@@ -648,24 +626,21 @@ contains
       StQ=1. ; StU=0. ; StV=0.
      EndIf
      omega=pi*(i_nu_ini+i_nu_max)* nuTrace_step_dwn
-     !write(2,*) '!GetStokes:', Ty, TPy,  Tx, TPx, SamplingTime_dwn
-! GetStokes:   0.0000000000000000        0.0000000000000000        4414869218959013.5        63471947025600.016        1.4989622899999999
-     !flush(unit=2)
+     !write(2,*) '!GetStokes-dt',Ty,TPy, Tx,TPx, SamplingTime_dwn
+     !Flush(2)
      If(TPy.le.0.d0) TPY=1.
      If(TPx.le.0.d0) TPx=1.  ! to avoid infty, not really essential
      dt=(Ty/TPy - Tx/TPx)*SamplingTime_dwn/c_l
      if(present(PrntStks))then
          if(.not.PrntStks) return
-         If(STI.eq.0.d0) STI=1.e-10  ! to avoid infty, not really essential
          if(nint(theta*180/pi).eq. 90) then
-          If(.not. Fitting) Then
-             If(STU.eq.0.d0) STU=1.e-10  ! to avoid infty, not really essential
+          If(.not. Fitting) &
              write(2,"(' d=',f8.1,'[m], phi=',f8.1,'[deg], I,Q/I,V/I,U/I=',e13.4,3F9.4,', delay=',F7.2,'[ns]',F9.4)") &
-               dist,theta*180/pi,StI,StQ/StI,StU/StI,StV/StI,atan(StV/StU)/omega,dt !,sqrt(StQ*StQ+Stu*Stu+Stv*StV)
-          EndIf
+            dist,theta*180/pi,StI,StQ/StI,StU/StI,StV/StI,atan(StV/StU)/omega,dt !,sqrt(StQ*StQ+Stu*Stu+Stv*StV)
          else
-            If(.not. Fitting) write(2,"(' d=',f8.1,'[m], phi=',f8.1,'[deg], I,Q/I,V/I,U/I=',e13.4,3F9.4)") &
-               dist,theta*180/pi,StI,StQ/StI,StU/StI,StV/StI !,sqrt(StQ*StQ+Stu*Stu+Stv*StV)
+          If(.not. Fitting) &
+             write(2,"(' d=',f8.1,'[m], phi=',f8.1,'[deg], I,Q/I,V/I,U/I=',e13.4,3F9.4)") &
+            dist,theta*180/pi,StI,StQ/StI,StU/StI,StV/StI !,sqrt(StQ*StQ+Stu*Stu+Stv*StV)
          endif
      endif
     end subroutine GetStokes
