@@ -61,7 +61,8 @@
 !    first=.true.
     read(*,NML = ShPars)
     Call CreateNewFolder(PlotBase,lineTXT)
-    OPEN(UNIT=2,STATUS='unknown',FILE=TRIM(PlotBase)//TRIM(OutFile)//TRIM(OutFileLabel)//'.out')
+    !OPEN(UNIT=2,STATUS='unknown',FILE=TRIM(PlotBase)//TRIM(OutFile)//TRIM(OutFileLabel)//'.out')
+    OPEN(UNIT=2,STATUS='unknown',FILE=TRIM(OutFile)//TRIM(OutFileLabel)//'.out')
     write(*,*) 'Output to file: ', TRIM(PlotBase)//TRIM(OutFile)//TRIM(OutFileLabel)//'.out'
     write(2,*) trim(lineTXT)
     Call MakeGLEplots(   PlotName=trim(PlotBase) )  ! set temporary file name for gle commands

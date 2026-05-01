@@ -224,7 +224,7 @@
         !   Keeping the same geometry thus keeps the same Cherenkov conditions.
         !   What changes is the pancake thikness parameter that depends on distance to core.
             !
-            !write(2,*) 'calling RayFields_t_obs(',idi,CD_i, ObsDist_dim
+            !write(2,*) 'calling RayFields_t_obs(',idi,CD_i, ObsDist_dim,CoreDist_Dim
             !Flush(unit=2)
             !   Calculate fields for point-like (in radial extent) = single ray in the shower or pencil shower --------------------------------
             !write(2,*) idi,(idi-0.5)*ObsDist_Step, CD_i, CoreDist_A(CD_i)
